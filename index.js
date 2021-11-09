@@ -47,7 +47,7 @@ const metricTypes = {
 };
 
 // The example template showcases each metric type
-const exampleTemplate = {
+/*const exampleTemplate = {
   metrics: [
     { name: "Toggle", type: "toggle", group: "Group" },
     { name: "Number", type: "number" },
@@ -56,7 +56,26 @@ const exampleTemplate = {
     { name: "Rating", type: "rating" },
     { name: "Timer", type: "timer" },
   ]
+};*/
+
+const infiniteRechargeSurvey = {
+  "metrics": [
+    { "name": "Team left starting line?", "type": "toggle", "group": "Auto" },
+    { "name": "Balls - Top Inner", "type": "number" },
+    { "name": "Balls - Top Outer", "type": "number" },
+    { "name": "Balls - Lower", "type": "number" },
+    { "name": "Missed Balls", "type": "number" },
+    { "name": "Balls - Top Inner", "type": "number", "group": "Teleop (Teams in control)" },
+    { "name": "Balls - Top Outer", "type": "number" },
+    { "name": "Balls - Lower", "type": "number" },
+    { "name": "Missed Balls", "type": "number" },
+    { "name": "Can the team spin the color wheel?", "type": "toggle" },
+    { "name": "Did the team make it into the finishing zone?", "type": "toggle", "group": "Shield Generator" },
+    { "name": "Did the team successfully climb?", "type": "toggle" },
+    { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here...", "group": "Notes" }]
 };
+
+const exampleTemplate = infiniteRechargeSurvey;
 
 let currentTemplate = JSON.parse(localStorage.template ?? JSON.stringify(exampleTemplate));
 loadTemplate(currentTemplate);

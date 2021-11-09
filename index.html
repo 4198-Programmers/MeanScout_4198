@@ -5,14 +5,14 @@
   <meta charset="utf-8">
   <!-- `user-scalable=no` prevents zooming on mobile devices after tapping twice -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A lightweight FRC scouting web app.">
+  <meta name="description" content="Scouting form for RoboCats 4198 based on MeanScout by Aidunlin.">
   <!-- Open Graph Protocol, used as a preview in Discord, Slack, etc. -->
-  <meta property="og:title" content="MeanScout">
+  <meta property="og:title" content="RoboCats Scouting Form">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://aidunlin.com/MeanScout/">
-  <meta property="og:image" content="https://aidunlin.com/MeanScout/logo.png">
+  <meta property="og:url" content="https://jjmelancon.github.io/MeanScout_4198/">>
+  <meta property="og:image" content="https://jjmelancon.github.io/MeanScout_4198/logo.png">
   <meta property="og:description" content="A lightweight FRC scouting web app.">
-  <title>MeanScout</title>
+  <title>RoboCats Scouting Form</title>
   <link rel="apple-touch-icon" href="./logo.png">
   <link rel="icon" href="./logo.png">
   <link rel="manifest" href="./app.webmanifest">
@@ -21,7 +21,7 @@
 
 <body>
   <div class="flex spaced" id="menu-bar">
-    <button id="menu-toggle-btn"><img class="text-icon" id="logo" src="./logo.png" alt>MeanScout</button>
+    <button id="menu-toggle-btn"><i class="bars text-icon"></i>Menu</button>
     <span id="location-text"></span>
   </div>
   <div class="flex hide" id="menu">
@@ -47,8 +47,8 @@
         <div class="flex">
           <div>
             <select id="download-type-sel">
-              <option>JSON</option>
               <option>CSV</option>
+              <option>JSON</option>
             </select>
           </div>
           <button id="surveys-download-btn"><i class="download text-icon"></i>Download</button>
