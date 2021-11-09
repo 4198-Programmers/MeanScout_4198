@@ -60,18 +60,23 @@ const metricTypes = {
 
 const infiniteRechargeSurvey = {
   "metrics": [
-    { "name": "Team left starting line?", "type": "toggle", "group": "Auto" },
-    { "name": "Balls - Top Inner", "type": "number" },
-    { "name": "Balls - Top Outer", "type": "number" },
-    { "name": "Balls - Lower", "type": "number" },
-    { "name": "Missed Balls", "type": "number" },
-    { "name": "Balls - Top Inner", "type": "number", "group": "Teleop (Teams in control)" },
-    { "name": "Balls - Top Outer", "type": "number" },
-    { "name": "Balls - Lower", "type": "number" },
-    { "name": "Missed Balls", "type": "number" },
-    { "name": "Can the team spin the color wheel?", "type": "toggle" },
-    { "name": "Did the team make it into the finishing zone?", "type": "toggle", "group": "Shield Generator" },
-    { "name": "Did the team successfully climb?", "type": "toggle" },
+    { "name": "Team left starting line?", "type": "toggle", "group": "Auto (Qualitative)" },
+
+    { "name": "Top Inner", "type": "number", "group": "Auto (Balls)"},
+    { "name": "Top Outer", "type": "number" },
+    { "name": "Lower", "type": "number" },
+    { "name": "Missed", "type": "number" },
+
+    { "name": "Can the team spin the color wheel?", "type": "toggle", "group": "Teleop (Qualitative)"},
+
+    { "name": "Top Inner", "type": "number", "group": "Teleop (Balls)" },
+    { "name": "Top Outer", "type": "number" },
+    { "name": "Lower", "type": "number" },
+    { "name": "Missed", "type": "number" },
+
+    { "name": "Team in finishing zone?", "type": "toggle", "group": "Shield Generator" },
+    { "name": "Team successfully climbs?", "type": "toggle" },
+
     { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here...", "group": "Notes" }]
 };
 

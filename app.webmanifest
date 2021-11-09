@@ -1,7 +1,7 @@
 {
-  "name": "MeanScout",
-  "short_name": "MeanScout",
-  "description": "A lightweight FRC scouting web app.",
+  "name": "RoboCats Scouting Form",
+  "short_name": "RoboScout",
+  "description": "Scouting form for RoboCats 4198 based on MeanScout by Aidunlin.",
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",
