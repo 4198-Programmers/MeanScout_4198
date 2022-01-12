@@ -60,24 +60,25 @@ const metricTypes = {
 
 const infiniteRechargeSurvey = {
   "metrics": [
-    { "name": "Team left starting line?", "type": "toggle", "group": "Auto (Qualitative)" },
+    { "name": "Team left tarmac?", "type": "toggle", "group": "Auto (Qualitative)" },
+    { "name": "Team collected balls?", "type": "toggle"},
 
-    { "name": "Top Inner", "type": "number", "group": "Auto (Balls)"},
-    { "name": "Top Outer", "type": "number" },
-    { "name": "Lower", "type": "number" },
+    { "name": "Top", "type": "number", "group": "Auto (Balls)"},
+    { "name": "Bottom", "type": "number" },
     { "name": "Missed", "type": "number" },
 
-    { "name": "Can the team spin the color wheel?", "type": "toggle", "group": "Teleop (Qualitative)"},
-
-    { "name": "Top Inner", "type": "number", "group": "Teleop (Balls)" },
-    { "name": "Top Outer", "type": "number" },
-    { "name": "Lower", "type": "number" },
+    { "name": "Top", "type": "number", "group": "Teleop (Balls)" },
+    { "name": "Bottom", "type": "number" },
     { "name": "Missed", "type": "number" },
 
-    { "name": "Team in finishing zone?", "type": "toggle", "group": "Shield Generator" },
-    { "name": "Team successfully climbs?", "type": "toggle" },
+    { "name": "Safe area usage:", "type": "select", "values": ["None", "A Little", "A Lot"], "group": "Teleop (Qualitative)" },
+    { "name": "Defence played:", "type": "select", "values": ["None", "A Little", "A Lot"] },
 
-    { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here...", "group": "Notes" }]
+    { "name": "Bar number reached (0 for none)", "type": "select", "values": ["0", "1", "2", "3", "4"], "group": "Endgame (Climb)" },
+    { "name": "Team attempts climbs?", "type": "toggle" },
+
+    { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here...", "group": "Notes" },
+    { "name": "Drive Team Rating", "type": "text", "tip": "Enter driver data here...", "group": "Notes" }]
 };
 
 const exampleTemplate = infiniteRechargeSurvey;
