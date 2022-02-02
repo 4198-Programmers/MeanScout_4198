@@ -304,7 +304,9 @@ function downloadSurveys(askUser = true) {
   anchor.remove();
 }
 
-/** Erases all surveys from `localStorage` after prompting the user */
+/** Erases all surveys from `localStorage` after prompting the user **/
 function eraseSurveys() {
-  if (prompt("Type 'erase' to erase saved surveys") == "erase") localStorage.surveys = "";
+  if (prompt("Type 'erase' to erase saved surveys") == "erase"){
+    localStorage.surveys = "[]";
+  }
 }
