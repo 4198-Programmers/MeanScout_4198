@@ -275,12 +275,15 @@ function resetSurvey(askUser = true) {
  */
 function downloadSurveys(askUser = true) {
   if (askUser) if (!confirm("Confirm download?")) return;
+  var fileName = localStorage.location.replace(" ", "_").toLowerCase();
+  var today = new Date();
+  fileName = fileName + "_" + today.getHours() + "h" + today.getMinutes() + "m";
   const anchor = document.createElement("a");
   anchor.href = "data:text/plain;charset=utf-8,";
   switch (downloadSelect.value) {
     case "JSON":
       anchor.href += encodeURIComponent(localStorage.surveys);
-      anchor.download = "surveys.json";
+      anchor.download = fileName + ".json";
       break;
     case "CSV":
       let surveys = JSON.parse(localStorage.surveys);
@@ -296,7 +299,7 @@ function downloadSurveys(askUser = true) {
         });
       }
       anchor.href += encodeURIComponent(csv);
-      anchor.download = "surveys.csv";
+      anchor.download = fileName + ".csv";
       break;
   }
   document.body.append(anchor);
