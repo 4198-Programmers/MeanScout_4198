@@ -79,6 +79,8 @@ const infiniteRechargeSurvey = {
 
     { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here...", "group": "Notes" },
     { "name": "Drive Team Rating", "type": "text", "tip": "Enter driver data here...", "group": "Notes" }]
+
+
 };
 
 const exampleTemplate = infiniteRechargeSurvey;
@@ -222,24 +224,24 @@ function setLocation(newLocation = "Red Near") {
 function saveSurvey() {
   // Matches a 1-4 long sequence of numbers and an optional character
   if (!/^\d{1,4}[A-Z]?$/.test(teamMetric.value)) {
-    alert("Invalid team value");
+    alert("Invalid team value! Please enter a 1-9999 digit team number.");
     teamMetric.focus();
     return;
   }
   if (currentTemplate.teams) {
     if (!currentTemplate.teams.some(team => team == teamMetric.value)) {
-      alert("Invalid team value");
+      alert("Invalid team value! Please enter a 1-9999 digit team number.");
       teamMetric.focus();
       return;
     }
   }
   // Matches a 1-3 long sequence of numbers
   if (!/\d{1,3}/.test(matchMetric.value)) {
-    alert("Invalid match value");
+    alert("Invalid match value! Make sure the match value is an integer.");
     matchMetric.focus();
     return;
   }
-  if (!confirm("Confirm save?")) return;
+  if (!confirm("Save match data?")) return;
   let surveys = JSON.parse(localStorage.surveys ?? "[]");
   surveys.push([
     { name: "Team", value: teamMetric.value },
@@ -256,7 +258,7 @@ function saveSurvey() {
  * @param {boolean} askUser A boolean that represents whether to prompt the user
  */
 function resetSurvey(askUser = true) {
-  if (askUser) if (prompt("Type 'reset' to reset the survey") != "reset") return;
+  if (askUser) if (prompt("Type 'reset' to reset this match's data.") != "reset") return;
   teamMetric.value = "";
   teamMetric.focus();
   if (!askUser) {
@@ -274,7 +276,7 @@ function resetSurvey(askUser = true) {
  * @param {boolean} askUser A boolean that represents whether to prompt the user
  */
 function downloadSurveys(askUser = true) {
-  if (askUser) if (!confirm("Confirm download?")) return;
+  if (askUser) if (!confirm("Are you sure you would like to export collected data?")) return;
   var fileName = localStorage.location.replace(" ", "_").toLowerCase();
   var today = new Date();
   fileName = fileName + "_" + today.getHours() + "h" + today.getMinutes() + "m";
@@ -309,7 +311,7 @@ function downloadSurveys(askUser = true) {
 
 /** Erases all surveys from `localStorage` after prompting the user **/
 function eraseSurveys() {
-  if (prompt("Type 'erase' to erase saved surveys") == "erase"){
+  if (prompt("This deletes all scouting data! Type 'ERASE' to erase saved surveys") == "ERASE"){
     localStorage.surveys = "[]";
   }
 }
