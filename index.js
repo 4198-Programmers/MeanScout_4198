@@ -118,7 +118,7 @@ function determineTeam(matchNo, positionStr) {
     return(matchListings[matchNo - 1][arrayPos]);
   } else {
     teamDisp.innerHTML = "None";
-    return undefined
+    return "None"
   }
 }
 
