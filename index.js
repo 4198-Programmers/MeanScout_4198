@@ -11,7 +11,7 @@ const templateEditButton = document.querySelector("#template-edit-btn");
 const downloadSelect = document.querySelector("#download-type-sel");
 const surveysDownloadButton = document.querySelector("#surveys-download-btn");
 const surveysEraseButton = document.querySelector("#surveys-erase-btn");
-const teamMetric = document.querySelector("#metric-team");
+const teamDisp = document.querySelector("#disp-team");
 const teamMetricList = document.querySelector("#teams-list");
 const matchMetric = document.querySelector("#metric-match");
 const absentMetric = document.querySelector("#metric-absent");
@@ -25,13 +25,12 @@ templateCopyButton.onclick = () => copyTemplate();
 templateEditButton.onclick = () => editTemplate();
 surveysDownloadButton.onclick = () => downloadSurveys();
 surveysEraseButton.onclick = () => eraseSurveys();
-teamMetric.oninput = () => backupSurvey();
 matchMetric.oninput = () => backupSurvey();
 absentMetric.onclick = () => toggleAbsent();
 surveySaveButton.onclick = () => saveSurvey();
 surveyResetButton.onclick = () => resetSurvey();
 
-let scoutLocation = "Red Near";
+let scoutLocation = "Red 1";
 let matchCount = 1;
 let isAbsent = false;
 let gameMetrics = [];
@@ -83,15 +82,16 @@ const infiniteRechargeSurvey = {
 
 };
 
+const matchListings = [[4238, 6175, 3277, 2450, 8887, 5172], [877, 8188, 2531, 8255, 8586, 5653], [7048, 5913, 4480, 6709, 2883, 3298], [7677, 3293, 3297, 7028, 7235, 4674], [3313, 3130, 4728, 6628, 3630, 876], [8298, 5658, 7858, 3134, 4198, 2508], [3275, 4239, 3300, 5929, 3058, 7038], [6453, 8422, 4539, 2654, 4607, 2538], [6175, 8255, 5172, 6709, 7048, 4360], [8586, 3298, 6628, 2450, 3630, 3313], [877, 876, 7677, 3277, 4480, 2883], [8887, 3297, 8188, 2531, 3130, 3275], [2508, 7028, 4607, 5913, 3300, 7235], [2654, 7858, 3293, 5658, 6453, 3058], [4728, 4238, 4674, 8298, 4239, 5929], [4539, 7038, 4198, 4360, 2538, 5653], [3134, 2883, 3630, 5172, 8422, 8188], [6175, 7028, 3130, 3313, 877, 2508], [3058, 8887, 3277, 8586, 5658, 6709], [4239, 2654, 8255, 876, 2450, 5913], [4607, 5929, 4480, 4198, 8298, 2531], [4728, 8422, 2538, 7038, 7048, 4238], [4674, 3293, 3275, 7858, 5653, 6628], [3300, 3298, 4360, 7677, 4539, 3134], [7235, 3297, 4239, 5172, 6453, 6709], [3630, 2508, 8298, 2654, 2531, 2883], [2450, 5929, 7048, 8887, 876, 5658], [4198, 5913, 3275, 3293, 4728, 877], [7038, 7677, 7028, 3058, 4539, 6175], [5653, 6453, 4238, 3300, 4480, 8586], [3313, 3277, 3134, 3297, 4674, 2538], [4360, 3130, 7858, 7235, 8422, 3298], [8188, 8255, 876, 4198, 4607, 6628], [7048, 7028, 5172, 3275, 877, 8298], [4728, 6709, 8887, 2508, 2654, 6453], [5913, 5653, 7038, 3297, 3134, 4238], [3298, 5658, 2531, 8422, 4674, 3130], [2883, 6628, 2538, 8586, 6175, 5929], [7235, 2450, 8255, 3058, 3313, 3300], [4539, 3277, 4360, 3293, 4480, 8188], [7858, 3630, 4607, 7677, 4239, 8887], [2531, 5172, 876, 7028, 4238, 3298], [2654, 8586, 3130, 3275, 5929, 3134], [6453, 2883, 7038, 4674, 4198, 2450], [3277, 6709, 3293, 8422, 2508, 3300], [6628, 4539, 4239, 7048, 5658, 7235], [2538, 877, 3630, 5653, 4607, 3058], [4480, 8255, 7858, 6175, 3297, 4728], [3313, 8298, 5913, 8188, 7677, 4360], [2508, 5172, 3298, 7038, 8586, 3293], [6709, 7235, 3134, 876, 4238, 2883], [8887, 2654, 4674, 6628, 3300, 877], [2538, 4198, 4239, 4480, 7028, 3297], [4607, 2531, 2450, 4728, 4360, 3275], [5913, 3277, 5929, 4539, 3313, 7858], [7048, 3058, 8422, 3130, 7677, 5653], [5658, 3630, 6175, 8255, 8298, 6453], [8188, 7235, 2654, 7038, 2538, 4480], [3300, 4674, 6709, 5172, 4728, 4198], [2531, 3134, 3293, 4239, 3313, 4607], [8422, 8586, 2883, 5913, 4539, 7028], [5929, 877, 5658, 3630, 4360, 3297], [2450, 7858, 6453, 3130, 8188, 7048], [5653, 3275, 6175, 876, 3298, 3277], [3058, 7677, 2508, 8255, 6628, 4238], [8298, 7038, 4674, 8887, 5913, 8586], [4607, 3300, 5658, 2883, 5172, 3313], [2538, 6709, 2450, 7028, 7858, 2531], [4239, 8188, 4728, 3298, 6175, 877], [5929, 5653, 2508, 6453, 3275, 7677], [4238, 4360, 4198, 3630, 7048, 2654], [4480, 7235, 8887, 8255, 3134, 8422], [3297, 876, 4539, 3293, 8298, 3058], [3130, 6628, 6709, 4607, 7038, 3277], [5658, 3275, 5172, 7858, 2538, 7677], [6175, 3300, 7048, 4674, 8188, 3630], [3313, 8887, 7028, 4480, 5653, 2654], [2883, 3058, 7235, 3298, 4728, 8298], [4238, 3293, 4539, 877, 3130, 8255], [3297, 2508, 8586, 4360, 876, 4239], [3134, 6453, 5913, 3277, 2531, 6628], [4198, 5929, 3313, 6175, 2450, 8422]]
+
 const exampleTemplate = infiniteRechargeSurvey;
 
 let currentTemplate = JSON.parse(localStorage.template ?? JSON.stringify(exampleTemplate));
 loadTemplate(currentTemplate);
-setLocation(localStorage.location ?? "Red Near");
+setLocation(localStorage.location ?? "Red 1");
 
 if (localStorage.backup) {
   const backup = JSON.parse(localStorage.backup);
-  teamMetric.value = backup.find(metric => metric.name == "Team").value;
   matchCount = backup.find(metric => metric.name == "Match").value;
   matchMetric.value = matchCount;
   isAbsent = backup.find(metric => metric.name == "Absent").value;
@@ -105,10 +105,27 @@ if (localStorage.backup) {
   });
 }
 
+function determineTeam(matchNo, positionStr) {
+  let arrayPos = 0;
+  if (matchListings[matchNo - 1] != undefined){
+    if (positionStr[0] == "R") {
+      arrayPos = parseInt(positionStr[positionStr.length - 1]) - 1;
+    }
+    else {
+      arrayPos = parseInt(positionStr[positionStr.length - 1]) + 2;
+    }
+    teamDisp.innerHTML = matchListings[matchNo - 1][arrayPos];
+    return(matchListings[matchNo - 1][arrayPos]);
+  } else {
+    teamDisp.innerHTML = "None";
+    return undefined
+  }
+}
+
 /** Stores the current unsaved survey to `localStorage` */
 function backupSurvey() {
   localStorage.backup = JSON.stringify([
-    { name: "Team", value: teamMetric.value },
+    { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
     { name: "Match", value: matchMetric.value },
     { name: "Absent", value: isAbsent },
     ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
@@ -209,7 +226,7 @@ function loadTemplate(newTemplate = exampleTemplate) {
  * Sets a new scout location
  * @param {string} newLocation A string that includes alliance color and robot position
  */
-function setLocation(newLocation = "Red Near") {
+function setLocation(newLocation = "Red 1") {
   scoutLocation = newLocation;
   let newTheme = "red";
   if (/blue/.test(newLocation.toLowerCase())) newTheme = "blue";
@@ -217,13 +234,14 @@ function setLocation(newLocation = "Red Near") {
   localStorage.location = newLocation;
   locationText.innerHTML = newLocation;
   locationSelect.value = newLocation;
+  teamDisp.innerHTML = determineTeam(matchMetric.value, scoutLocation);
   refreshIcons();
 }
 
 /** Validates and saves the current survey to `localStorage` */
 function saveSurvey() {
   // Matches a 1-4 long sequence of numbers and an optional character
-  if (!/^\d{1,4}[A-Z]?$/.test(teamMetric.value)) {
+  /*(if (!/^\d{1,4}[A-Z]?$/.test(teamMetric.value)) {
     alert("Invalid team value! Please enter a 1-9999 digit team number.");
     teamMetric.focus();
     return;
@@ -234,17 +252,22 @@ function saveSurvey() {
       teamMetric.focus();
       return;
     }
-  }
+  }*/
   // Matches a 1-3 long sequence of numbers
   if (!/\d{1,3}/.test(matchMetric.value)) {
     alert("Invalid match value! Make sure the match value is an integer.");
     matchMetric.focus();
     return;
   }
+  if (1 > matchMetric.value || matchMetric.value > matchListings.length ){
+    alert("Invalid match value! Make sure the match value is a valid qualifier match.");
+    matchMetric.focus();
+    return;
+  }
   if (!confirm("Save match data?")) return;
   let surveys = JSON.parse(localStorage.surveys ?? "[]");
   surveys.push([
-    { name: "Team", value: teamMetric.value },
+    { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
     { name: "Match", value: matchMetric.value },
     { name: "Absent", value: isAbsent },
     ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
@@ -259,14 +282,13 @@ function saveSurvey() {
  */
 function resetSurvey(askUser = true) {
   if (askUser) if (prompt("Type 'reset' to reset this match's data.") != "reset") return;
-  teamMetric.value = "";
-  teamMetric.focus();
   if (!askUser) {
     matchCount = parseInt(matchMetric.value) + 1;
     matchMetric.value = matchCount;
   }
   if (isAbsent) toggleAbsent();
   gameMetrics.forEach(metric => metric.reset());
+  teamDisp.innerHTML = determineTeam(matchMetric.value, scoutLocation);
   refreshIcons();
   localStorage.backup = "";
 }
