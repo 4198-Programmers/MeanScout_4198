@@ -103,6 +103,7 @@ if (localStorage.backup) {
   gameMetrics.forEach(metric => {
     metric.update(backup.find(m => m.name == metric.name).value);
   });
+  teamDisp.innerHTML = determineTeam(matchMetric.value, scoutLocation);
 }
 
 function determineTeam(matchNo, positionStr) {
