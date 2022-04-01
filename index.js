@@ -5,6 +5,7 @@ if ("serviceWorker" in navigator) {
 const menuToggleButton = document.querySelector("#menu-toggle-btn");
 const locationText = document.querySelector("#location-text");
 const menuDiv = document.querySelector("#menu");
+const authPasswd = document.querySelector("#auth-passwd")
 const locationSelect = document.querySelector("#location-select");
 const templateCopyButton = document.querySelector("#template-copy-btn");
 const templateEditButton = document.querySelector("#template-edit-btn");
@@ -62,9 +63,9 @@ const infiniteRechargeSurvey = {
     { "name": "Team left tarmac?", "type": "toggle", "group": "Auto (Qualitative)" },
     { "name": "Team collected balls?", "type": "toggle"},
 
-    { "name": "Top", "type": "number", "group": "Auto (Balls)"},
-    { "name": "Bottom", "type": "number" },
-    { "name": "Missed", "type": "number" },
+    { "name": "Top (Pre)", "type": "number", "group": "Auto (Balls)"},
+    { "name": "Bottom (Pre)", "type": "number" },
+    { "name": "Missed (Pre)", "type": "number" },
 
     { "name": "Top", "type": "number", "group": "Teleop (Balls)" },
     { "name": "Bottom", "type": "number" },
@@ -73,11 +74,12 @@ const infiniteRechargeSurvey = {
     { "name": "Safe area usage:", "type": "select", "values": ["None", "A Little", "A Lot"], "group": "Teleop (Qualitative)" },
     { "name": "Defence played:", "type": "select", "values": ["None", "A Little", "A Lot"] },
 
-    { "name": "Bar number reached (0 for none)", "type": "select", "values": ["0", "1", "2", "3", "4"], "group": "Endgame (Climb)" },
+    { "name": "Bar number reached", "type": "select", "values": ["0", "1", "2", "3", "4"], "group": "Endgame (Climb)" },
     { "name": "Team attempts climbs?", "type": "toggle" },
 
-    { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here...", "group": "Notes" },
-    { "name": "Drive Team Rating", "type": "text", "tip": "Enter driver data here...", "group": "Notes" }]
+    { "name": "Any robot problems?", "type": "select", "values": ["No Problems", "Solid Light (Disabled)", "No Light (Lost Power)", "Minor Hardware Failure", "Major Hardware Failure"], "group": "Extra" },
+    { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here..." },
+    { "name": "Drive Team Rating", "type": "text", "tip": "Enter driver data here..." }]
 
 
 };
@@ -121,6 +123,17 @@ function determineTeam(matchNo, positionStr) {
     teamDisp.innerHTML = "None";
     return "None"
   }
+}
+
+function postSurvey(surveyJson){
+  newJson = "{\n";
+  surveyJson.forEach(metric => {
+    prettyName = metric.name.toLowerCase().split(/\(|\)|\ |\?/).join("").slice(0, 12);
+    if (typeof metric.value == "string") newJson += ('    "' + prettyName + '": "' + metric.value + '",\n');
+    else newJson += ('    "' + prettyName + '": ' + metric.value + ',\n');
+  });
+  newJson += '    "password": "' + authPasswd.value + '"\n}';
+  console.log(newJson);
 }
 
 /** Stores the current unsaved survey to `localStorage` */
@@ -268,6 +281,12 @@ function saveSurvey() {
   if (!confirm("Save match data?")) return;
   let surveys = JSON.parse(localStorage.surveys ?? "[]");
   surveys.push([
+    { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
+    { name: "Match", value: matchMetric.value },
+    { name: "Absent", value: isAbsent },
+    ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
+  ]);
+  postSurvey([
     { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
     { name: "Match", value: matchMetric.value },
     { name: "Absent", value: isAbsent },
