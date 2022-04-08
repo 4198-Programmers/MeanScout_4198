@@ -27,6 +27,7 @@ templateEditButton.onclick = () => editTemplate();
 surveysDownloadButton.onclick = () => downloadSurveys();
 surveysEraseButton.onclick = () => eraseSurveys();
 matchMetric.oninput = () => backupSurvey();
+authPasswd.oninput = () => backupSurvey();
 absentMetric.onclick = () => toggleAbsent();
 surveySaveButton.onclick = () => saveSurvey();
 surveyResetButton.onclick = () => resetSurvey();
@@ -84,7 +85,7 @@ const infiniteRechargeSurvey = {
 
 };
 
-const matchListings = [[4238, 6175, 3277, 2450, 8887, 5172], [877, 8188, 2531, 8255, 8586, 5653], [7048, 5913, 4480, 6709, 2883, 3298], [7677, 3293, 3297, 7028, 7235, 4674], [3313, 3130, 4728, 6628, 3630, 876], [8298, 5658, 7858, 3134, 4198, 2508], [3275, 4239, 3300, 5929, 3058, 7038], [6453, 8422, 4539, 2654, 4607, 2538], [6175, 8255, 5172, 6709, 7048, 4360], [8586, 3298, 6628, 2450, 3630, 3313], [877, 876, 7677, 3277, 4480, 2883], [8887, 3297, 8188, 2531, 3130, 3275], [2508, 7028, 4607, 5913, 3300, 7235], [2654, 7858, 3293, 5658, 6453, 3058], [4728, 4238, 4674, 8298, 4239, 5929], [4539, 7038, 4198, 4360, 2538, 5653], [3134, 2883, 3630, 5172, 8422, 8188], [6175, 7028, 3130, 3313, 877, 2508], [3058, 8887, 3277, 8586, 5658, 6709], [4239, 2654, 8255, 876, 2450, 5913], [4607, 5929, 4480, 4198, 8298, 2531], [4728, 8422, 2538, 7038, 7048, 4238], [4674, 3293, 3275, 7858, 5653, 6628], [3300, 3298, 4360, 7677, 4539, 3134], [7235, 3297, 4239, 5172, 6453, 6709], [3630, 2508, 8298, 2654, 2531, 2883], [2450, 5929, 7048, 8887, 876, 5658], [4198, 5913, 3275, 3293, 4728, 877], [7038, 7677, 7028, 3058, 4539, 6175], [5653, 6453, 4238, 3300, 4480, 8586], [3313, 3277, 3134, 3297, 4674, 2538], [4360, 3130, 7858, 7235, 8422, 3298], [8188, 8255, 876, 4198, 4607, 6628], [7048, 7028, 5172, 3275, 877, 8298], [4728, 6709, 8887, 2508, 2654, 6453], [5913, 5653, 7038, 3297, 3134, 4238], [3298, 5658, 2531, 8422, 4674, 3130], [2883, 6628, 2538, 8586, 6175, 5929], [7235, 2450, 8255, 3058, 3313, 3300], [4539, 3277, 4360, 3293, 4480, 8188], [7858, 3630, 4607, 7677, 4239, 8887], [2531, 5172, 876, 7028, 4238, 3298], [2654, 8586, 3130, 3275, 5929, 3134], [6453, 2883, 7038, 4674, 4198, 2450], [3277, 6709, 3293, 8422, 2508, 3300], [6628, 4539, 4239, 7048, 5658, 7235], [2538, 877, 3630, 5653, 4607, 3058], [4480, 8255, 7858, 6175, 3297, 4728], [3313, 8298, 5913, 8188, 7677, 4360], [2508, 5172, 3298, 7038, 8586, 3293], [6709, 7235, 3134, 876, 4238, 2883], [8887, 2654, 4674, 6628, 3300, 877], [2538, 4198, 4239, 4480, 7028, 3297], [4607, 2531, 2450, 4728, 4360, 3275], [5913, 3277, 5929, 4539, 3313, 7858], [7048, 3058, 8422, 3130, 7677, 5653], [5658, 3630, 6175, 8255, 8298, 6453], [8188, 7235, 2654, 7038, 2538, 4480], [3300, 4674, 6709, 5172, 4728, 4198], [2531, 3134, 3293, 4239, 3313, 4607], [8422, 8586, 2883, 5913, 4539, 7028], [5929, 877, 5658, 3630, 4360, 3297], [2450, 7858, 6453, 3130, 8188, 7048], [5653, 3275, 6175, 876, 3298, 3277], [3058, 7677, 2508, 8255, 6628, 4238], [8298, 7038, 4674, 8887, 5913, 8586], [4607, 3300, 5658, 2883, 5172, 3313], [2538, 6709, 2450, 7028, 7858, 2531], [4239, 8188, 4728, 3298, 6175, 877], [5929, 5653, 2508, 6453, 3275, 7677], [4238, 4360, 4198, 3630, 7048, 2654], [4480, 7235, 8887, 8255, 3134, 8422], [3297, 876, 4539, 3293, 8298, 3058], [3130, 6628, 6709, 4607, 7038, 3277], [5658, 3275, 5172, 7858, 2538, 7677], [6175, 3300, 7048, 4674, 8188, 3630], [3313, 8887, 7028, 4480, 5653, 2654], [2883, 3058, 7235, 3298, 4728, 8298], [4238, 3293, 4539, 877, 3130, 8255], [3297, 2508, 8586, 4360, 876, 4239], [3134, 6453, 5913, 3277, 2531, 6628], [4198, 5929, 3313, 6175, 2450, 8422]]
+const matchListings = [[8878, 6420, 3202, 7028, 2879, 2202], [4536, 3407, 2169, 4229, 7849, 7038], [7257, 2518, 3454, 2513, 4207, 4632], [2530, 525, 8787, 2498, 3082, 2508], [2515, 5299, 2502, 8516, 3023, 3026], [3691, 3277, 5996, 5434, 2846, 3278], [2500, 4664, 5541, 7850, 4778, 3751], [3018, 2470, 4198, 7068, 3630, 2823], [2264, 4624, 3038, 2181, 4539, 3871], [2879, 4207, 525, 2530, 2052, 3407], [7028, 3026, 2515, 7849, 7257, 8787], [3082, 8516, 2846, 3202, 2518, 7038], [5434, 4632, 4536, 3023, 5541, 2498], [4664, 5996, 3278, 3454, 7068, 5299], [2502, 4539, 3018, 3691, 4198, 2202], [2181, 3038, 7850, 2470, 4229, 2508], [2513, 8878, 2823, 2264, 4778, 3277], [2500, 3751, 2052, 4624, 6420, 3630], [2169, 3202, 5434, 3026, 3871, 8787], [2879, 7038, 2846, 7257, 7068, 2498], [5541, 4536, 7028, 3082, 2518, 3018], [3038, 4539, 3691, 5299, 525, 3023], [4664, 4229, 2181, 2823, 2202, 2515], [3630, 5996, 2264, 2530, 4778, 6420], [7850, 2500, 3278, 4198, 7849, 2513], [3277, 3454, 3871, 3407, 8516, 3751], [2470, 4624, 4207, 2508, 8878, 2169], [4632, 2502, 5541, 2052, 3026, 4539], [7038, 5434, 7028, 2879, 5299, 4664], [2181, 2518, 2823, 6420, 3691, 7257], [525, 3278, 4778, 3023, 7850, 4536], [2530, 2515, 7068, 2513, 2500, 3202], [7849, 3751, 2498, 3018, 3038, 8878], [2169, 3871, 3630, 2502, 4207, 3277], [2470, 4632, 8516, 2202, 5996, 3407], [2508, 3454, 4624, 4229, 4198, 3082], [8787, 2052, 4664, 2264, 2846, 2181], [4539, 2515, 2518, 3278, 7038, 2823], [7068, 525, 3691, 3026, 8878, 5541], [6420, 3277, 3023, 4207, 2530, 7849], [3871, 2513, 3751, 2470, 5996, 7028], [4778, 2498, 4229, 4198, 3202, 2502], [8516, 7257, 5299, 4536, 2508, 2052], [2500, 2879, 3038, 3454, 2202, 2169], [3082, 2264, 3407, 3630, 3018, 5434], [7850, 4632, 4624, 2846, 8787, 2515], [8878, 3871, 2470, 3023, 4664, 2530], [5541, 7038, 4207, 5996, 2181, 4198], [7068, 3026, 2513, 6420, 2498, 8516], [7849, 7028, 2508, 3454, 3691, 2502], [2202, 3038, 2052, 4778, 5434, 3082], [3407, 5299, 2846, 2169, 2823, 2500], [3630, 3202, 7850, 7257, 4536, 4539], [2879, 4632, 3018, 4624, 3278, 4229], [2518, 8787, 2264, 525, 3751, 3277], [7028, 2530, 4198, 8516, 7068, 2181], [3454, 2498, 5434, 2515, 2470, 4778], [2846, 2823, 2508, 3871, 5541, 7849], [3082, 2169, 6420, 4539, 7850, 4664], [3202, 3018, 4207, 5299, 3038, 4632], [3407, 4229, 7257, 3278, 2264, 3026], [3277, 2513, 2202, 7038, 525, 4624], [2518, 3691, 3023, 3630, 8787, 2879], [2500, 2502, 4536, 3751, 8878, 5996], [2052, 2823, 2498, 7028, 3454, 7850], [3871, 7068, 4778, 5299, 2181, 7849], [3278, 2515, 8516, 5541, 2169, 2264], [4229, 5434, 4539, 4207, 7257, 2846], [3023, 4198, 4624, 4664, 3202, 3407], [2202, 2530, 3026, 3751, 4536, 2518], [8787, 6420, 7038, 3038, 2502, 2470], [5996, 2508, 2513, 2052, 3630, 8878], [2879, 3277, 3082, 3691, 2500, 4632], [525, 5434, 2181, 3018, 8516, 3454], [2264, 3023, 7257, 7068, 2169, 4198], [3751, 2202, 5299, 2846, 7850, 2530], [3278, 3407, 5541, 6420, 7028, 2502], [2518, 7849, 2470, 4624, 2052, 3202], [2823, 2879, 3026, 3038, 3082, 5996], [3277, 3630, 4229, 2498, 4664, 525], [4536, 4207, 3871, 2515, 2513, 3691], [8787, 2508, 4539, 4778, 3018, 2500], [4632, 7038, 3454, 8878, 2264, 2530], [2502, 7850, 7068, 5434, 4624, 2518], [5996, 3023, 7849, 2202, 3082, 7257], [3751, 2181, 3630, 3202, 3278, 2879], [4198, 2846, 4664, 3026, 4536, 3038], [4207, 8516, 3691, 2498, 2470, 2500], [3018, 2052, 6420, 7038, 3871, 2515], [8787, 4229, 8878, 5299, 5541, 2513], [2823, 7028, 4778, 4632, 2169, 525], [2508, 3407, 2879, 4539, 3277, 7068]]
 
 const exampleTemplate = infiniteRechargeSurvey;
 
@@ -95,6 +96,7 @@ setLocation(localStorage.location ?? "Red 1");
 if (localStorage.backup) {
   const backup = JSON.parse(localStorage.backup);
   matchCount = backup.find(metric => metric.name == "Match").value;
+  authPasswd.value = backup.find(metric => metric.name == "Auth").value;
   matchMetric.value = matchCount;
   isAbsent = backup.find(metric => metric.name == "Absent").value;
   if (isAbsent) {
@@ -133,7 +135,37 @@ function postSurvey(surveyJson){
     else newJson += ('    "' + prettyName + '": ' + metric.value + ',\n');
   });
   newJson += '    "password": "' + authPasswd.value + '"\n}';
-  console.log(newJson);
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://127.0.0.1:8000/scouting");
+
+  xhr.setRequestHeader("Accept", "application/json");
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  xhr.onload = function () {
+
+	// Process our return data
+	if (xhr.status >= 200 && xhr.status < 300) {
+		// Runs when the request is successful
+		console.log(xhr.responseText);
+    if (xhr.responseText == '"Auth Failure: Not Allowed"'){
+      alert("Authentication failure. Please check password.");
+      authPasswd.focus();
+      return;
+    }
+    if (xhr.responseText == '"Added Form"'){
+      resetSurvey(false);
+    }
+    else{
+      alert("Unknown error occured. Please check your Internet connection.");
+      return;
+    }
+	} else {
+		// Runs when it's not
+		console.log(xhr.responseText);
+	 }
+  };
+  xhr.send(newJson);
+
 }
 
 /** Stores the current unsaved survey to `localStorage` */
@@ -141,6 +173,7 @@ function backupSurvey() {
   localStorage.backup = JSON.stringify([
     { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
     { name: "Match", value: matchMetric.value },
+    { name: "Auth", value: authPasswd.value },
     { name: "Absent", value: isAbsent },
     ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
   ]);
@@ -278,22 +311,34 @@ function saveSurvey() {
     matchMetric.focus();
     return;
   }
-  if (!confirm("Save match data?")) return;
-  let surveys = JSON.parse(localStorage.surveys ?? "[]");
-  surveys.push([
-    { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
-    { name: "Match", value: matchMetric.value },
-    { name: "Absent", value: isAbsent },
-    ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
-  ]);
-  postSurvey([
-    { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
-    { name: "Match", value: matchMetric.value },
-    { name: "Absent", value: isAbsent },
-    ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
-  ]);
-  localStorage.surveys = JSON.stringify(surveys);
-  resetSurvey(false);
+  if (authPasswd.value == ""){
+    if (!confirm("Save match data OFFLINE?")) return;
+    let surveys = JSON.parse(localStorage.surveys ?? "[]");
+    surveys.push([
+      { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
+      { name: "Match", value: matchMetric.value },
+      { name: "Absent", value: isAbsent },
+      ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
+    ]);
+    localStorage.surveys = JSON.stringify(surveys);
+    resetSurvey(false);
+  }
+  else {
+    if (!confirm("Save match data online?")) return;
+    let surveys = JSON.parse(localStorage.surveys ?? "[]");
+    surveys.push([
+      { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
+      { name: "Match", value: matchMetric.value },
+      { name: "Absent", value: isAbsent },
+      ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
+    ]);
+    postSurvey([
+      { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
+      { name: "Match", value: matchMetric.value },
+      { name: "Absent", value: isAbsent },
+      ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
+    ]);
+  }
 }
 
 /**
