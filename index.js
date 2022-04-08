@@ -136,7 +136,7 @@ function postSurvey(surveyJson){
   });
   newJson += '    "password": "' + authPasswd.value + '"\n}';
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "http://192.168.50.5:8000/scouting");
+  xhr.open("POST", "https://data.team4198.org:8000/scouting");
 
   xhr.setRequestHeader("Accept", "application/json");
   xhr.setRequestHeader("Content-Type", "application/json");
