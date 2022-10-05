@@ -14,7 +14,8 @@ const surveysDownloadButton = document.querySelector("#surveys-download-btn");
 const surveysEraseButton = document.querySelector("#surveys-erase-btn");
 const teamDisp = document.querySelector("#disp-team");
 const teamMetricList = document.querySelector("#teams-list");
-const nameMetric = document.querySelector("#metric-name");
+
+const teamMetric = document.querySelector("#metric-team");
 const matchMetric = document.querySelector("#metric-match");
 const absentMetric = document.querySelector("#metric-absent");
 const customMetricsDiv = document.querySelector("#metrics-custom");
@@ -62,6 +63,8 @@ const metricTypes = {
 
 const infiniteRechargeSurvey = {
   "metrics": [
+    { "name": "Name", "type": "text", "tip": "Your Own Name..."},
+
     { "name": "Team left tarmac?", "type": "toggle", "group": "Auto (Qualitative)" },
     { "name": "Team collected balls?", "type": "toggle"},
 
@@ -172,11 +175,10 @@ function postSurvey(surveyJson){
 /** Stores the current unsaved survey to `localStorage` */
 function backupSurvey() {
   localStorage.backup = JSON.stringify([
-    { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
+    { name: "Team", value: teamMetric.value },
     { name: "Match", value: matchMetric.value },
     { name: "Auth", value: authPasswd.value },
     { name: "Absent", value: isAbsent },
-    { name: "Name", value: matchMetric.name },
     ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
   ]);
 }
@@ -317,10 +319,9 @@ function saveSurvey() {
     if (!confirm("Save match data OFFLINE?")) return;
     let surveys = JSON.parse(localStorage.surveys ?? "[]");
     surveys.push([
-      { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
+      { name: "Team", value: teamMetric.value },
       { name: "Match", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
-      { name: "Name", value: matchMetric.name },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
     localStorage.surveys = JSON.stringify(surveys);
@@ -330,17 +331,15 @@ function saveSurvey() {
     if (!confirm("Save match data online?")) return;
     let surveys = JSON.parse(localStorage.surveys ?? "[]");
     surveys.push([
-      { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
+      { name: "Team", value: teamMetric.value },
       { name: "Match", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
-      { name: "Name", value: matchMetric.name },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
     postSurvey([
-      { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
+      { name: "Team", value: teamMetric.value },
       { name: "Match", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
-      { name: "Name", value: matchMetric.name },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
   }
