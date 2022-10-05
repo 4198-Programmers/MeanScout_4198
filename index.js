@@ -140,7 +140,7 @@ function postSurvey(surveyJson){
   });
   newJson += '    "password": "' + authPasswd.value + '"\n}';
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "https://data.team4198.org:8000/scouting");
+  xhr.open("POST", "http://data.team4198.org:8000/scouting");
 
   xhr.setRequestHeader("Accept", "application/json");
   xhr.setRequestHeader("Content-Type", "application/json");
@@ -176,7 +176,7 @@ function postSurvey(surveyJson){
 function backupSurvey() {
   localStorage.backup = JSON.stringify([
     { name: "Team", value: teamMetric.value },
-    { name: "Match", value: matchMetric.value },
+    { name: "Matchnum", value: matchMetric.value },
     { name: "Auth", value: authPasswd.value },
     { name: "Absent", value: isAbsent },
     ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
@@ -320,7 +320,7 @@ function saveSurvey() {
     let surveys = JSON.parse(localStorage.surveys ?? "[]");
     surveys.push([
       { name: "Team", value: teamMetric.value },
-      { name: "Match", value: matchMetric.value },
+      { name: "Matchnum", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
@@ -332,13 +332,13 @@ function saveSurvey() {
     let surveys = JSON.parse(localStorage.surveys ?? "[]");
     surveys.push([
       { name: "Team", value: teamMetric.value },
-      { name: "Match", value: matchMetric.value },
+      { name: "Matchnum", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
     postSurvey([
       { name: "Team", value: teamMetric.value },
-      { name: "Match", value: matchMetric.value },
+      { name: "Matchnum", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
