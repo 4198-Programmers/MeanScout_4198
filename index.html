@@ -56,7 +56,11 @@
           </div>
           <button id="surveys-download-btn"><i class="download text-icon"></i>Download</button>
           <button id="surveys-erase-btn"><i class="eraser text-icon"></i>Erase</button>
+          
         </div>
+      </div>
+      <div>Name
+        <input id="metric-name name">
       </div>
     </div>
   </div>
@@ -64,7 +68,7 @@
     <div class="flex spaced" id="metrics-default">
       <div>Team
         <br>
-        <span id="disp-team" style="font-size:36px">None</span>
+        <input id="metric-team" list="teams" autofocus maxlength="5">
         <datalist id="teams-list"></datalist>
       </div>
       <div>Match
