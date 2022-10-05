@@ -42,9 +42,10 @@ class NumberMetric {
       this.update();
       backupSurvey();
     };
-    this.incrementor = this.createCrementor("plus", 1);
+    
     this.decrementor = this.createCrementor("minus", -1);
-    this.element.append(this.incrementor, this.number, this.decrementor);
+    this.incrementor = this.createCrementor("plus", 1);
+    this.element.append(this.decrementor, this.number, this.incrementor);
   }
 
   createCrementor(text = "", dir = 0) {
