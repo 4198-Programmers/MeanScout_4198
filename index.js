@@ -143,7 +143,7 @@ function postSurvey(surveyJson){
   xhr.open("POST", "http://data.team4198.org:8000/scouting");
 
   xhr.setRequestHeader("Accept", "application/json");
-  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("Content-Type", "text/plain");
 
   xhr.onload = function () {
 
