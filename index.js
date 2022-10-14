@@ -14,6 +14,7 @@ const surveysDownloadButton = document.querySelector("#surveys-download-btn");
 const surveysEraseButton = document.querySelector("#surveys-erase-btn");
 const teamDisp = document.querySelector("#disp-team");
 const teamMetricList = document.querySelector("#teams-list");
+const teamMetric = document.querySelector("#metric-team");
 const matchMetric = document.querySelector("#metric-match");
 const absentMetric = document.querySelector("#metric-absent");
 const customMetricsDiv = document.querySelector("#metrics-custom");
@@ -107,7 +108,7 @@ if (localStorage.backup) {
   gameMetrics.forEach(metric => {
     metric.update(backup.find(m => m.name == metric.name).value);
   });
-  teamDisp.innerHTML = determineTeam(matchMetric.value, scoutLocation);
+//   teamDisp.innerHTML = determineTeam(matchMetric.value, scoutLocation);
 }
 
 function determineTeam(matchNo, positionStr) {
@@ -136,7 +137,7 @@ function postSurvey(surveyJson){
   });
   newJson += '    "password": "' + authPasswd.value + '"\n}';
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "https://data.team4198.org:8000/scouting");
+  xhr.open("POST", "http://data.team4198.org:8000/scouting");
 
   xhr.setRequestHeader("Accept", "application/json");
   xhr.setRequestHeader("Content-Type", "application/json");
@@ -171,7 +172,7 @@ function postSurvey(surveyJson){
 /** Stores the current unsaved survey to `localStorage` */
 function backupSurvey() {
   localStorage.backup = JSON.stringify([
-    { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
+    { name: "Team", value: teamMetric.value },
     { name: "Match", value: matchMetric.value },
     { name: "Auth", value: authPasswd.value },
     { name: "Absent", value: isAbsent },
@@ -281,7 +282,7 @@ function setLocation(newLocation = "Red 1") {
   localStorage.location = newLocation;
   locationText.innerHTML = newLocation;
   locationSelect.value = newLocation;
-  teamDisp.innerHTML = determineTeam(matchMetric.value, scoutLocation);
+//   teamDisp.innerHTML = determineTeam(matchMetric.value, scoutLocation);
   refreshIcons();
 }
 
@@ -315,7 +316,7 @@ function saveSurvey() {
     if (!confirm("Save match data OFFLINE?")) return;
     let surveys = JSON.parse(localStorage.surveys ?? "[]");
     surveys.push([
-      { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
+      { name: "Team", value: teamMetric.value },
       { name: "Match", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
@@ -327,13 +328,13 @@ function saveSurvey() {
     if (!confirm("Save match data online?")) return;
     let surveys = JSON.parse(localStorage.surveys ?? "[]");
     surveys.push([
-      { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
+      { name: "Team", value: teamMetric.value },
       { name: "Match", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
     postSurvey([
-      { name: "Team", value: determineTeam(matchMetric.value, scoutLocation) },
+      { name: "Team", value:teamMetric.value },
       { name: "Match", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
@@ -353,7 +354,7 @@ function resetSurvey(askUser = true) {
   }
   if (isAbsent) toggleAbsent();
   gameMetrics.forEach(metric => metric.reset());
-  teamDisp.innerHTML = determineTeam(matchMetric.value, scoutLocation);
+//   teamDisp.innerHTML = determineTeam(matchMetric.value, scoutLocation);
   refreshIcons();
   localStorage.backup = "";
 }
