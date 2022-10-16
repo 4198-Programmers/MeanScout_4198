@@ -326,7 +326,6 @@ function saveSurvey() {
         teamMetric.focus();
         return;
     }
-    console.log(scoutName);
     
   }
   // Matches a 1-3 long sequence of numbers
