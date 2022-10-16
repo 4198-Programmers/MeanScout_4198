@@ -5,7 +5,8 @@ if ("serviceWorker" in navigator) {
 const menuToggleButton = document.querySelector("#menu-toggle-btn");
 const locationText = document.querySelector("#location-text");
 const menuDiv = document.querySelector("#menu");
-const authPasswd = document.querySelector("#auth-passwd")
+const authPasswd = document.querySelector("#auth-passwd");
+const scoutName = document.querySelector("#scout-name");
 const locationSelect = document.querySelector("#location-select");
 const templateCopyButton = document.querySelector("#template-copy-btn");
 const templateEditButton = document.querySelector("#template-edit-btn");
@@ -67,8 +68,6 @@ const metricTypes = {
 
 const infiniteRechargeSurvey = {
   "metrics": [
-    { "name": "Name", "type": "text", "tip": "Your Own Name..."},
-
     { "name": "Team left tarmac?", "type": "toggle", "group": "Auto (Qualitative)" },
     { "name": "Team collected balls?", "type": "toggle"},
 
@@ -113,6 +112,7 @@ if (localStorage.backup) {
   matchCount = backup.find(metric => metric.name == "Match").value;
   authPasswd.value = backup.find(metric => metric.name == "Auth").value;
   matchMetric.value = matchCount;
+  scoutName.value = backup.find(metric => metric.name == "tName").value;
   isAbsent = backup.find(metric => metric.name == "Absent").value;
   if (isAbsent) {
     absentMetric.innerHTML = "<i class='square-checked text-icon'></i>Absent";
@@ -192,6 +192,7 @@ function backupSurvey() {
     { name: "Matchnum", value: matchMetric.value },
     { name: "Auth", value: authPasswd.value },
     { name: "Absent", value: isAbsent },
+    { name: "Name", value: scoutName.value},
     ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
   ]);
 }
@@ -319,6 +320,13 @@ function saveSurvey() {
         return;
       }
     }
+
+    if (scoutName.value == "") {
+        alert("Invalid name value! Please enter your name where it goes.");
+        teamMetric.focus();
+        return;
+    }
+    console.log(scoutName);
     
   }
   // Matches a 1-3 long sequence of numbers
@@ -342,6 +350,7 @@ function saveSurvey() {
       { name: "Matchnum", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
       { name: "Location", value: locationSelect.value },
+      { name: "Name", value: scoutName.value},
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
     localStorage.surveys = JSON.stringify(surveys);
@@ -355,6 +364,7 @@ function saveSurvey() {
       { name: "Matchnum", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
       { name: "Location", value: locationSelect.value },
+      { name: "Name", value: scoutName.value},
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
     postSurvey([
@@ -362,6 +372,7 @@ function saveSurvey() {
       { name: "Matchnum", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
       { name: "Location", value: locationSelect.value },
+      { name: "Name", value: scoutName.value},
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
   }
