@@ -319,6 +319,7 @@ function saveSurvey() {
         return;
       }
     }
+    
   }
   // Matches a 1-3 long sequence of numbers
   if (!/\d{1,3}/.test(matchMetric.value)) {
@@ -340,6 +341,7 @@ function saveSurvey() {
       { name: "Team", value: teamMetric.value },
       { name: "Matchnum", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
+      { name: "Location", value: locationSelect.value },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
     localStorage.surveys = JSON.stringify(surveys);
@@ -352,12 +354,14 @@ function saveSurvey() {
       { name: "Team", value: teamMetric.value },
       { name: "Matchnum", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
+      { name: "Location", value: locationSelect.value },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
     postSurvey([
       { name: "Team", value: teamMetric.value },
       { name: "Matchnum", value: matchMetric.value },
       { name: "Absent", value: isAbsent },
+      { name: "Location", value: locationSelect.value },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
   }
