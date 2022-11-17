@@ -162,6 +162,7 @@ function postSurvey(surveyJson){
   xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.onload = function () {
+    console.log(xhr.status);
 
     if (xhr.status == 401){
         console.log("Password Failed")
