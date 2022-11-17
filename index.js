@@ -163,16 +163,18 @@ function postSurvey(surveyJson){
 
   xhr.onload = function () {
 
-	// Process our return data
-	if (xhr.status >= 200 && xhr.status < 300) {
-		// Runs when the request is successful
-		console.log(xhr.responseText);
-    if (xhr.responseText == '"Auth Failure: Not Allowed"'){
+    if (xhr.status == 401){
+        console.log("Password Failed")
       alert("Authentication failure. Please check password.");
       authPasswd.focus();
       return;
     }
-    if (xhr.responseText == '"Added Form"'){
+
+	// Process our return data
+	if (xhr.status >= 200 && xhr.status < 300) {
+		// Runs when the request is successful
+		console.log(xhr.responseText);
+    if (xhr.status == 202){
       resetSurvey(false);
     }
     else{
@@ -185,6 +187,9 @@ function postSurvey(surveyJson){
 	 }
   };
   xhr.send(newJson);
+
+
+  
 }
 
 /** Stores the current unsaved survey to `localStorage` */
