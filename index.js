@@ -178,6 +178,9 @@ function postSurvey(surveyJson){
     if (xhr.status == 202){
       resetSurvey(false);
     }
+    if (xhr.status == 200) {
+        resetSurvey(false)
+    }
     else{
       alert("Unknown error occured. Please check your Internet connection.");
       return;
