@@ -79,7 +79,7 @@ const infiniteRechargeSurvey = {
     { "name": "Missed", "type": "number" },
 
     { "name": "Safe area usage:", "type": "select", "values": ["None", "A Little", "A Lot"], "group": "Teleop (Qualitative)" },
-    { "name": "Defence played:", "type": "select", "values": ["None", "A Little", "A Lot"] },
+    { "name": "Defence played:", "type": "select", "values": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] },
 
     { "name": "Bar number reached", "type": "select", "values": ["0", "1", "2", "3", "4"], "group": "Endgame (Climb)" },
     { "name": "Team attempts climbs?", "type": "toggle" },
