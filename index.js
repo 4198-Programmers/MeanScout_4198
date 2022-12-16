@@ -81,8 +81,8 @@ const infiniteRechargeSurvey = {
     { "name": "Safe area usage:", "type": "select", "values": ["None", "A Little", "A Lot"], "group": "Teleop (Qualitative)" },
     { "name": "Defence played:", "type": "select", "values": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] },
 
-    { "name": "Bar number reached", "type": "select", "values": ["0", "1", "2", "3", "4"], "group": "Endgame (Climb)" },
-    { "name": "Team attempts climbs?", "type": "toggle" },
+    { "name": "Team attempts climbs?", "type": "toggle", "group": "Endgame (Climb)" },
+    { "name": "Bar number reached", "type": "select", "values": ["0", "1", "2", "3", "4"] },
     { "name": "Climb Time", "type": "timer"},
   
     { "name": "Any robot problems?", "type": "select", "values": ["No Problems", "Solid Light (Disabled)", "No Light (Lost Power)", "Minor Hardware Failure", "Major Hardware Failure"], "group": "Extra" },
