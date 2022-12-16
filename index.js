@@ -83,9 +83,8 @@ const infiniteRechargeSurvey = {
 
     { "name": "Bar number reached", "type": "select", "values": ["0", "1", "2", "3", "4"], "group": "Endgame (Climb)" },
     { "name": "Team attempts climbs?", "type": "toggle" },
-
-    { "name": "Rough Estimate for Climb Time", "type": "select", "values": ["0 seconds", "5 seconds", "10 seconds", "20 seconds", "30 seconds", "40 seconds", "50 seconds", "60 seconds", "60+ seconds"]},
-
+    { "name": "Climb Time", "type": "timer"},
+  
     { "name": "Any robot problems?", "type": "select", "values": ["No Problems", "Solid Light (Disabled)", "No Light (Lost Power)", "Minor Hardware Failure", "Major Hardware Failure"], "group": "Extra" },
     { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here..." },
     { "name": "Drive Team Rating", "type": "text", "tip": "Enter driver data here..." }]
