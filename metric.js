@@ -45,7 +45,7 @@ class NumberMetric {
     
     this.decrementor = this.createCrementor("minus", -1);
     this.incrementor = this.createCrementor("plus", 1);
-    this.element.append(this.decrementor, this.number, this.incrementor);
+    {this.element.append(this.decrementor, this.number, this.incrementor)};
   }
 
   createCrementor(text = "", dir = 0) {
@@ -54,6 +54,7 @@ class NumberMetric {
     crementor.onclick = () => {
       if (!this.number.value) this.number.value = 0;
       this.update(parseInt(this.number.value) + dir);
+      if (this.number.value <0) {this.number.value = 0};   //remove to get negative
       backupSurvey();
     };
     return crementor;
