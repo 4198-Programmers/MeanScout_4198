@@ -97,7 +97,7 @@ const infiniteRechargeSurvey = {
     { "name": "Defence played:", "group":"Defense","type": "select", "values": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] }, //i want to make this a slider and add more
 
     { "name": "Team attempts Charge?", "type": "toggle", "group": "Endgame (Climb)" },
-    { "name": "Charge ballenced", "type": "toggle"},
+    { "name": "Charge balance", "type": "toggle"},
     { "name": "Charge ballence time", "type": "timer"},
   
     { "name": "Any robot problems?", "type": "select", "values": ["No Problems", "Solid Light (Disabled)", "No Light (Lost Power)", "Minor Hardware Failure", "Major Hardware Failure"], "group": "Extra" },
