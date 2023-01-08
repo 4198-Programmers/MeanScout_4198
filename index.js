@@ -98,7 +98,7 @@ const infiniteRechargeSurvey = {
 
     { "name": "Team attempts Charge?", "type": "toggle", "group": "Endgame (Climb)" },
     { "name": "Charge balance", "type": "toggle"},
-    { "name": "Charge balance time", "type": "timer"},
+    { "name": "Charge time", "type": "timer"},
   
     { "name": "Any robot problems?", "type": "select", "values": ["No Problems", "Solid Light (Disabled)", "No Light (Lost Power)", "Minor Hardware Failure", "Major Hardware Failure"], "group": "Extra" },
     { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here..." },
