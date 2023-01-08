@@ -70,26 +70,26 @@ const infiniteRechargeSurvey = {
     { "name": "Team left community?", "type": "toggle", "group": "Auto (Qualitative)" },
     { "name": "Team collected Game pieces?", "type": "toggle"},
 
-    { "name": "Top", "type": "number", "group": "Auto (Cubes)"},
-    { "name": "Middle", "type": "number" },
-    { "name": "Bottom", "type": "number" },
+    { "name": "Top Cubes", "type": "number", "group": "Auto (Cubes)"},
+    { "name": "Middle Cubes", "type": "number" },
+    { "name": "Bottom Cubes", "type": "number" },
+    { "name": "Missed Cubes", "type": "number" },
+
+    { "name": "Top Cones", "type": "number", "group": "Auto (Cones)"},
+    { "name": "Middle Cones", "type": "number" },
+    { "name": "Bottom Cones", "type": "number" },
+    { "name": "Missed Cones", "type": "number" },
+
+
+    { "name": "Top Cube", "type": "number", "group": "Teleop (Cubes)"},
+    { "name": "Middle Cube", "type": "number" },
+    { "name": "Bottom Cube", "type": "number" },
     { "name": "Missed", "type": "number" },
 
-    { "name": "Top", "type": "number", "group": "Auto (Cones)"},
-    { "name": "Middle", "type": "number" },
-    { "name": "Bottom", "type": "number" },
-    { "name": "Missed", "type": "number" },
-
-
-    { "name": "Top", "type": "number", "group": "Teleop (Cubes)"},
-    { "name": "Middle", "type": "number" },
-    { "name": "Bottom", "type": "number" },
-    { "name": "Missed", "type": "number" },
-
-    { "name": "Top", "type": "number", "group": "Teleop (Cones)"},
-    { "name": "Middle", "type": "number" },
-    { "name": "Bottom", "type": "number" },
-    { "name": "Missed", "type": "number" },
+    { "name": "Top Cone", "type": "number", "group": "Teleop (Cones)"},
+    { "name": "Middle Cone", "type": "number" },
+    { "name": "Bottom Cone", "type": "number" },
+    { "name": "Missed Cone", "type": "number" },
 
 
 
