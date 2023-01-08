@@ -69,6 +69,7 @@ const infiniteRechargeSurvey = {
   "metrics": [
     { "name": "Team left community?", "type": "toggle", "group": "Auto (Qualitative)" },
     { "name": "Team collected Game pieces?", "type": "toggle"},
+    { "name": "Auto Charge station", "type": "select", "values":["No","Docked","Engaged"]},
 
     { "name": "Top Cubes", "type": "number", "group": "Auto (Cubes)"},
     { "name": "Middle Cubes", "type": "number" },
@@ -79,7 +80,6 @@ const infiniteRechargeSurvey = {
     { "name": "Middle Cones", "type": "number" },
     { "name": "Bottom Cones", "type": "number" },
     { "name": "Missed Cones", "type": "number" },
-
 
     { "name": "Top Cube", "type": "number", "group": "Teleop (Cubes)"},
     { "name": "Middle Cube", "type": "number" },
@@ -96,11 +96,11 @@ const infiniteRechargeSurvey = {
 
     { "name": "Defence played:", "group":"Defense","type": "select", "values": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] }, //i want to make this a slider and add more
 
-    { "name": "Team attempts Charge?", "type": "toggle", "group": "Endgame (Climb)" },
-    { "name": "Charge balance", "type": "toggle"},
-    { "name": "Charge time", "type": "timer"},
+    { "name": "Team attempts Charge?", "type": "toggle", "group": "Endgame (Charger)" },
+    { "name": "Charge station", "type": "select", "values":["","Docked","Engaged"]},
   
     { "name": "Any robot problems?", "type": "select", "values": ["No Problems", "Solid Light (Disabled)", "No Light (Lost Power)", "Minor Hardware Failure", "Major Hardware Failure"], "group": "Extra" },
+    { "name": "Fouls", "type": "text", "tip":"enter in if bot got a foul"},
     { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here..." },
     { "name": "Drive Team Rating", "type": "text", "tip": "Enter driver data here..." },
     { "name": "Play style summary", "type":"text", "tip":"Sentence or two on play style"}]
