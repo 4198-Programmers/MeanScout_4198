@@ -84,7 +84,7 @@ const infiniteRechargeSurvey = {
     { "name": "Top Cube", "type": "number", "group": "Teleop (Cubes)"},
     { "name": "Middle Cube", "type": "number" },
     { "name": "Bottom Cube", "type": "number" },
-    { "name": "Missed", "type": "number" },
+    { "name": "Missed Cube", "type": "number" },
 
     { "name": "Top Cone", "type": "number", "group": "Teleop (Cones)"},
     { "name": "Middle Cone", "type": "number" },
