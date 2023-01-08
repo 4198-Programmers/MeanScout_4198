@@ -162,7 +162,7 @@ function determineTeam(matchNo, positionStr) {
 function postSurvey(surveyJson){
   newJson = "{\n";
   surveyJson.forEach(metric => {
-    prettyName = metric.name.toLowerCase().split(/\(|\)|\ |\?/).join("").slice(0, 12);
+    prettyName = metric.name.toLowerCase().split(/\(|\)|\ |\?/).join("").slice(0, 13);
     if (typeof metric.value == "string") newJson += ('    "' + prettyName + '": "' + metric.value + '",\n');
     else newJson += ('    "' + prettyName + '": ' + metric.value + ',\n');
   });
