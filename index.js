@@ -82,14 +82,14 @@ const infiniteRechargeSurvey = {
     { "name": "Missed Cones", "type": "number" },
 
     { "name": "Top Cube", "type": "number", "group": "Teleop (Cubes)"},
-    { "name": "Middle Cubes", "type": "number" },
-    { "name": "Bottom Cubes", "type": "number" },
-    { "name": "Missed Cubes", "type": "number" },
+    { "name": "Middle Cube", "type": "number" },
+    { "name": "Bottom Cube", "type": "number" },
+    { "name": "Missed Cube", "type": "number" },
 
-    { "name": "Top Cones", "type": "number", "group": "Teleop (Cones)"},
-    { "name": "Middle Cones", "type": "number" },
-    { "name": "Bottom Cones", "type": "number" },
-    { "name": "Missed Cones", "type": "number" },
+    { "name": "Top Cone", "type": "number", "group": "Teleop (Cones)"},
+    { "name": "Middle Cone", "type": "number" },
+    { "name": "Bottom Cone", "type": "number" },
+    { "name": "Missed Cone", "type": "number" },
 
     { "name": "Defence play Time:", "group":"Defense","type":"timer" }, //i want to make this a slider and add more 
     { "name":"Defensive rating","type":"rating"},
