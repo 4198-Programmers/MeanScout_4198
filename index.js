@@ -92,7 +92,7 @@ const infiniteRechargeSurvey = {
     { "name": "Missed Cones", "type": "number" },
 
     { "name": "Defence play Time:", "group":"Defense","type":"timer" }, //i want to make this a slider and add more 
-    { "name":"Devensive rating","type":"rating"},
+    { "name":"Defensive rating","type":"rating"},
 
     { "name": "Team attempts Charge?", "type": "toggle", "group": "Endgame (Charger)" },
     { "name": "Charge station", "type": "select", "values":["Docked","Engaged"]},
