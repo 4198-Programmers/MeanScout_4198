@@ -96,7 +96,8 @@ const infiniteRechargeSurvey = {
 
     { "name": "Team attempts Charge?", "type": "toggle", "group": "Endgame (Charger)" },
     { "name": "Charge station", "type": "select", "values":["Docked","Engaged"]},
-  
+    { "name":"Links","type":"number"},
+
     { "name": "Any robot problems?", "type": "select", "values": ["No Problems", "Solid Light (Disabled)", "No Light (Lost Power)", "Minor Hardware Failure", "Major Hardware Failure"], "group": "Extra" },
     { "name": "Fouls", "type": "text", "tip":"enter in if bot got a foul"},
     { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here..." },
