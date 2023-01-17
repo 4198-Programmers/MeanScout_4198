@@ -69,7 +69,7 @@ const infiniteRechargeSurvey = {
   "metrics": [
     { "name": "Team left community?", "type": "toggle", "group": "Auto (Qualitative)" },
     { "name": "Team collected items?", "type": "toggle"},
-    { "name": "Auto Charge station", "type": "select", "values":["No","Docked","Engaged"]},
+    { "name": "Auto Charge station", "type": "select", "values":["","Docked","Engaged"]},
 
     { "name": "Top Cubes", "type": "number", "group": "Auto (Cubes)"},
     { "name": "Middle Cubes", "type": "number" },
@@ -95,7 +95,7 @@ const infiniteRechargeSurvey = {
     { "name":"Defensive rating","type":"rating"},
 
     { "name": "Team attempts Charge?", "type": "toggle", "group": "Endgame (Charger)" },
-    { "name": "Charge station", "type": "select", "values":["Docked","Engaged"]},
+    { "name": "Charge station", "type": "select", "values":["","Docked","Engaged"]},
     { "name":"Links","type":"number"},
 
     { "name": "Any robot problems?", "type": "select", "values": ["No Problems", "Solid Light (Disabled)", "No Light (Lost Power)", "Minor Hardware Failure", "Major Hardware Failure"], "group": "Extra" },
