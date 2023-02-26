@@ -99,8 +99,8 @@ const infiniteRechargeSurvey = {
     { "name":"Links","type":"number"},
 
     { "name": "Any robot problems?", "type": "select", "values": ["No Problems", "Solid Light (Disabled)", "No Light (Lost Power)", "Minor Hardware Failure", "Major Hardware Failure"], "group": "Extra" },
-    { "name": "Fouls", "type": "text", "tip":"Enter in if bot was involved with a foul..."},
     { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here..." },
+    { "name": "Fouls", "type": "text", "tip":"Enter in if bot was involved with a foul..."},
     { "name": "Drive Team Rating", "type": "text", "tip": "Enter driver data here..." },
     { "name": "Play style summary", "type":"text", "tip":"Sentence or two on play style..."}]
 };
