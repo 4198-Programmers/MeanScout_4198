@@ -1,16 +1,19 @@
 // After creating a new metric, don't forget to add it to `metricTypes`, the example template, and the README.
 class ToggleMetricGrid {
-  constructor() {
+  constructor(metric = { name: "togglegrid"}) {
     this.element = document.createElement("div");
+    this.value = [];
     this.element.className = "grid-container"; // Add a class name for styling
     for (let i = 0; i < 3; i++) {
       const row = document.createElement("div");
-      row.className = "grid-row"; // Add a class name for styling
+      row.className = "grid-item"; // Add a class name for styling
       for (let j = 0; j < 9; j++) {
         const toggle = new ToggleMetric({ name: `Toggle ${i * 9 + j}` });
         row.appendChild(toggle.element);
+        this.value.push(toggle.value)
       }
       this.element.appendChild(row);
+      
     }
   }
 }
@@ -36,7 +39,7 @@ class ToggleMetric {
   }
 
   reset() {
-    this.update(false);
+    this.update(false); 
   }
 }
 

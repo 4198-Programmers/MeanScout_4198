@@ -173,3 +173,8 @@ svg,
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}

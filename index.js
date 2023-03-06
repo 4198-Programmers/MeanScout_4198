@@ -72,7 +72,7 @@ const infiniteRechargeSurvey = {
     { "name": "Team collected items?", "type": "toggle"},
     { "name": "Auto Charge station", "type": "select", "values":["No","Docked","Engaged"]},
 
-    { "name": "Missed Cones", "type": "togglegrid", "group":"Auto" },
+    { "name": "toggletesting", "type": "togglegrid", "group":"Auto" },
 
     { "name": "Top Cones", "type": "number", "group": "Auto (Cones)"},
     { "name": "Middle Cones", "type": "number" },
