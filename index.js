@@ -46,12 +46,13 @@ let serverURL = "https://data.team4198.org:8000";
 // If you make a new type, be sure to add it here
 const metricTypes = {
   "toggle": ToggleMetric,
+  "togglegrid": ToggleMetricGrid,
   "number": NumberMetric,
   "select": SelectMetric,
   "text": TextMetric,
   "rating": RatingMetric,
   "timer": TimerMetric,
-};
+  };
 
 // The example template showcases each metric type
 /*const exampleTemplate = {
@@ -71,10 +72,7 @@ const infiniteRechargeSurvey = {
     { "name": "Team collected items?", "type": "toggle"},
     { "name": "Auto Charge station", "type": "select", "values":["No","Docked","Engaged"]},
 
-    { "name": "Top Cubes", "type": "number", "group": "Auto (Cubes)"},
-    { "name": "Middle Cubes", "type": "number" },
-    { "name": "Bottom Cubes", "type": "number" },
-    { "name": "Missed Cubes", "type": "number" },
+    { "name": "Missed Cones", "type": "togglegrid", "group":"Auto" },
 
     { "name": "Top Cones", "type": "number", "group": "Auto (Cones)"},
     { "name": "Middle Cones", "type": "number" },

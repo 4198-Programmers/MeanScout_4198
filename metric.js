@@ -1,8 +1,22 @@
 // After creating a new metric, don't forget to add it to `metricTypes`, the example template, and the README.
+class ToggleMetricGrid {
+  constructor() {
+    this.element = document.createElement("div");
+    this.element.className = "grid-container"; // Add a class name for styling
+    for (let i = 0; i < 3; i++) {
+      const row = document.createElement("div");
+      row.className = "grid-row"; // Add a class name for styling
+      for (let j = 0; j < 9; j++) {
+        const toggle = new ToggleMetric({ name: `Toggle ${i * 9 + j}` });
+        row.appendChild(toggle.element);
+      }
+      this.element.appendChild(row);
+    }
+  }
+}
 
-/** A toggleable button. Value is a boolean. */
 class ToggleMetric {
-  constructor(metric = { name: "Toggle" }) {
+  constructor(metric = { name: "toggle" }) {
     this.name = metric.name;
     this.value = false;
     this.element = document.createElement("div");
@@ -12,7 +26,7 @@ class ToggleMetric {
       this.update();
       backupSurvey();
     };
-    this.element.append(this.toggle);
+    this.element.appendChild(this.toggle);
   }
 
   update(newValue = !this.value) {
@@ -25,6 +39,10 @@ class ToggleMetric {
     this.update(false);
   }
 }
+
+
+
+
 
 /** A number input with increment/decrement buttons. Value is an integer. */
 class NumberMetric {
