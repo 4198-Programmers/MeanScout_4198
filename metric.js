@@ -10,7 +10,7 @@ class ToggleMetricGrid {
       for (let j = 0; j < 9; j++) {
         const toggle = new ToggleMetric({ name: `Toggle ${i * 9 + j}` });
         row.appendChild(toggle.element);
-        this.value.push(toggle.value)
+        this.value.push(toggle)
       }
       this.element.appendChild(row);
       
