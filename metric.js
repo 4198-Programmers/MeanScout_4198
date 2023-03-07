@@ -9,7 +9,7 @@ class ToggleMetricGrid {
       const row = document.createElement("div");
       row.className = "grid-item"; // Add a class name for styling
       for (let j = 0; j < 9; j++) {
-        const toggle = new ToggleMetric({ name: `Toggle ${i * 9 + j}` });
+        const toggle = new ToggleMetricInt({ name: `Toggle ${i * 9 + j}` });
         row.appendChild(toggle.element);
         this.value.push(toggle)
       }
@@ -58,7 +58,40 @@ class ToggleMetric {
 }
 
 
-
+class ToggleMetricInt {
+    constructor(metric = { name: "toggleint" }) {
+      this.name = metric.name;
+      this.value = 0;
+      this.element = document.createElement("div");
+      this.toggle = document.createElement("button");
+      this.toggle.innerHTML = `<i class="square-empty text-icon"></i>${this.name}`;
+      var incrementor;
+      this.toggle.onclick = () => {
+        if (this.value >= 2) {incrementor = 0} else {incrementor = this.value += 1};
+        this.update(incrementor);
+        backupSurvey();
+      };
+      this.element.appendChild(this.toggle);
+    }
+  
+    update(newValue) {
+      this.value = newValue;
+      var square = "empty";
+      if (this.value == 0) {
+        square = "empty";
+      } else if (this.value == 1) {
+        square = "checked"
+      } else {
+        square = "x"
+      }
+      this.toggle.innerHTML = `<i class="square-${square} text-icon"></i>${this.name}`;
+      refreshIcons(this.toggle);
+    }
+  
+    reset() {
+      this.update(0); 
+    }
+  }
 
 
 /** A number input with increment/decrement buttons. Value is an integer. */

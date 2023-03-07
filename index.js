@@ -74,6 +74,8 @@ const infiniteRechargeSurvey = {
 
     { "name": "toggletesting", "type": "togglegrid", "group":"Auto" },
 
+    // { "name": "teleopgrid", "type": "togglegrid", "group": "Teleop" },
+
     // { "name": "Top Cones", "type": "number", "group": "Auto (Cones)"},
     // { "name": "Middle Cones", "type": "number" },
     // { "name": "Bottom Cones", "type": "number" },
@@ -88,7 +90,7 @@ const infiniteRechargeSurvey = {
     // { "name": "Middle Cone", "type": "number" },
     // { "name": "Bottom Cone", "type": "number" },
     // { "name": "Missed Cone", "type": "number" },
-    
+
     { "name": "Defence play Time:", "group":"Defense","type":"timer" }, //i want to make this a slider and add more 
     { "name":"Defensive rating","type":"rating"},
 
