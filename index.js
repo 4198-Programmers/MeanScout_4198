@@ -74,21 +74,21 @@ const infiniteRechargeSurvey = {
 
     { "name": "toggletesting", "type": "togglegrid", "group":"Auto" },
 
-    { "name": "Top Cones", "type": "number", "group": "Auto (Cones)"},
-    { "name": "Middle Cones", "type": "number" },
-    { "name": "Bottom Cones", "type": "number" },
-    { "name": "Missed Cones", "type": "number" },
+    // { "name": "Top Cones", "type": "number", "group": "Auto (Cones)"},
+    // { "name": "Middle Cones", "type": "number" },
+    // { "name": "Bottom Cones", "type": "number" },
+    // { "name": "Missed Cones", "type": "number" },
 
-    { "name": "Top Cube", "type": "number", "group": "Teleop (Cubes)"},
-    { "name": "Middle Cube", "type": "number" },
-    { "name": "Bottom Cube", "type": "number" },
-    { "name": "Missed Cube", "type": "number" },
+    // { "name": "Top Cube", "type": "number", "group": "Teleop (Cubes)"},
+    // { "name": "Middle Cube", "type": "number" },
+    // { "name": "Bottom Cube", "type": "number" },
+    // { "name": "Missed Cube", "type": "number" },
 
-    { "name": "Top Cone", "type": "number", "group": "Teleop (Cones)"},
-    { "name": "Middle Cone", "type": "number" },
-    { "name": "Bottom Cone", "type": "number" },
-    { "name": "Missed Cone", "type": "number" },
-
+    // { "name": "Top Cone", "type": "number", "group": "Teleop (Cones)"},
+    // { "name": "Middle Cone", "type": "number" },
+    // { "name": "Bottom Cone", "type": "number" },
+    // { "name": "Missed Cone", "type": "number" },
+    
     { "name": "Defence play Time:", "group":"Defense","type":"timer" }, //i want to make this a slider and add more 
     { "name":"Defensive rating","type":"rating"},
 
@@ -158,11 +158,11 @@ function determineTeam(matchNo, positionStr) {
 
 function postSurvey(surveyJson){
   newJson = "{\n";
-  surveyJson.forEach(metric => {
+  JSON.stringify(surveyJson.forEach(metric => {
     prettyName = metric.name.toLowerCase().split(/\(|\)|\ |\?/).join("").slice(0, 13);
     if (typeof metric.value == "string") newJson += ('    "' + prettyName + '": "' + metric.value + '",\n');
-    else newJson += ('    "' + prettyName + '": ' + metric.value + ',\n');
-  });
+    else newJson += ('    "' + prettyName + '": ' + JSON.stringify(metric.value) + ',\n');
+  }));
   newJson += '    "password": "' + authPasswd.value + '"\n}';
   let xhr = new XMLHttpRequest();
   xhr.open("POST", serverURL + "/scouting");

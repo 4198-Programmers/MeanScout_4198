@@ -1,6 +1,7 @@
 // After creating a new metric, don't forget to add it to `metricTypes`, the example template, and the README.
 class ToggleMetricGrid {
   constructor(metric = { name: "togglegrid"}) {
+    this.name = metric.name;
     this.element = document.createElement("div");
     this.value = [];
     this.element.className = "grid-container"; // Add a class name for styling
@@ -14,6 +15,19 @@ class ToggleMetricGrid {
       }
       this.element.appendChild(row);
       
+    }
+  }
+
+  update(newValue = !this.value) {
+    this.value = newValue;
+    this.toggle.innerHTML = `<i class="square-${newValue ? "checked" : "empty"} text-icon"></i>${this.name}`;
+    refreshIcons(this.toggle);
+  }
+
+  reset() {
+    // this.update(false); 
+    for (let i = 0; i < this.value.length; i++) {
+        this.value[i].toggle.innerHTML = `<i class="square-${false ? "checked" : "empty"} text-icon"></i>${this.value[i].name}`;
     }
   }
 }
