@@ -177,4 +177,5 @@ input[type=number] {
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
+    width: 100%;
 }

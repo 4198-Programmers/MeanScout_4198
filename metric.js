@@ -9,7 +9,7 @@ class ToggleMetricGrid {
       const row = document.createElement("div");
       row.className = "grid-item"; // Add a class name for styling
       for (let j = 0; j < 9; j++) {
-        const toggle = new ToggleMetricInt({ name: `Toggle ${i * 9 + j}` });
+        const toggle = new ToggleMetricInt({ name: `${i * 9 + j}` });
         row.appendChild(toggle.element);
         this.value.push(toggle)
       }
