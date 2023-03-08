@@ -5,17 +5,28 @@ class ToggleMetricGrid {
     this.element = document.createElement("div");
     this.value = [];
     this.element.className = "grid-container"; // Add a class name for styling
+    const header = document.createElement("div");
+    header.className = "grid-header grid-item";
+    header.innerHTML = `Right Side of Field`;
+
+    const footer = document.createElement("div");
+    footer.className = "grid-footer grid-item";
+    footer.innerHTML = `Left Side of Field`;
+
+    this.element.appendChild(header);
     for (let i = 0; i < 3; i++) {
       const row = document.createElement("div");
-      row.className = "grid-item"; // Add a class name for styling
+      row.className = "grid-item" // Add a class name for styling
+      row.style = "grid-area: column-" + i.toString()
       for (let j = 0; j < 9; j++) {
-        const toggle = new ToggleMetricInt({ name: `${i * 9 + j}` });
+        const toggle = new ToggleMetricInt({ name: `${[1, 4, 7].includes(j) ? "Cube" : "Cone"}` });
+        toggle.element.className = "toggle";
         row.appendChild(toggle.element);
         this.value.push(toggle)
       }
       this.element.appendChild(row);
-      
     }
+    
   }
 
   update(newValue = !this.value) {

@@ -178,4 +178,42 @@ input[type=number] {
     display: grid;
     grid-template-columns: auto auto auto;
     width: 100%;
+    grid-template-areas:
+        'header header header '
+        'column-0 column-1 column-2'
+        'footer footer footer';
+}
+
+.grid-header {
+    grid-area: header;
+    text-align: center;
+    /* background-color: blue; */
+}
+
+.toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.column-0 {
+    grid-area: column-1;
+    /* background-color: red; */
+    justify-content: center;
+    align-items: center;
+}
+
+.column-1 {
+    grid-area: column-2;
+    /* background-color: rebeccapurple; */
+}
+
+.column-2 {
+    grid-area: column-3;
+    /* background-color: orange; */
+}
+
+.grid-footer {
+    grid-area: footer;
+    text-align: center;
 }
