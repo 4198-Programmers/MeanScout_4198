@@ -7,11 +7,11 @@ class ToggleMetricGrid {
     this.element.className = "grid-container"; // Add a class name for styling
     const header = document.createElement("div");
     header.className = "grid-header grid-item";
-    header.innerHTML = `Right Side of Field`;
+    header.innerHTML = `Left Side of Field`;
 
     const footer = document.createElement("div");
     footer.className = "grid-footer grid-item";
-    footer.innerHTML = `Left Side of Field`;
+    footer.innerHTML = `Ride Side of Field`;
 
     this.element.appendChild(header);
     for (let i = 0; i < 3; i++) {
