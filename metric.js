@@ -251,7 +251,7 @@ class RatingMetric {
 class TimerMetric {
   constructor(metric = { name: "Timer" }) {
     this.name = metric.name;
-    this.value = 0;
+    this.value = 0.0001;
     this.running = false;
     this.interval = null;
     this.element = document.createElement("div");
