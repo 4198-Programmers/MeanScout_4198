@@ -38,7 +38,7 @@ class ToggleMetricGrid {
   reset() {
     // this.update(false); 
     for (let i = 0; i < this.value.length; i++) {
-        this.value[i].toggle.innerHTML = `<i class="square-${false ? "checked" : "empty"} text-icon"></i>${this.value[i].name}`;
+        this.value[i].update(0);
     }
   }
 }
