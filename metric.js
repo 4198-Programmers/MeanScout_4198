@@ -1,16 +1,44 @@
 // After creating a new metric, don't forget to add it to `metricTypes`, the example template, and the README.
 class ToggleMetricGrid {
-  constructor() {
+  constructor(metric = { name: "togglegrid"}) {
+    this.name = metric.name;
     this.element = document.createElement("div");
+    this.value = [];
     this.element.className = "grid-container"; // Add a class name for styling
+    const header = document.createElement("div");
+    header.className = "grid-header grid-item";
+    header.innerHTML = `Left Side of Field`;
+
+    const footer = document.createElement("div");
+    footer.className = "grid-footer grid-item";
+    footer.innerHTML = `Ride Side of Field`;
+
+    this.element.appendChild(header);
     for (let i = 0; i < 3; i++) {
       const row = document.createElement("div");
-      row.className = "grid-row"; // Add a class name for styling
+      row.className = "grid-item" // Add a class name for styling
+      row.style = "grid-area: column-" + i.toString()
       for (let j = 0; j < 9; j++) {
-        const toggle = new ToggleMetric({ name: `Toggle ${i * 9 + j}` });
+        const toggle = new ToggleMetricInt({ name: `${[1, 4, 7].includes(j) ? "Cube" : "Cone"}` });
+        toggle.element.className = "toggle";
         row.appendChild(toggle.element);
+        this.value.push(toggle)
       }
       this.element.appendChild(row);
+    }
+    
+  }
+
+  update(newValue = !this.value) {
+    this.value = newValue;
+    this.toggle.innerHTML = `<i class="square-${newValue ? "checked" : "empty"} text-icon"></i>${this.name}`;
+    refreshIcons(this.toggle);
+  }
+
+  reset() {
+    // this.update(false); 
+    for (let i = 0; i < this.value.length; i++) {
+        this.value[i].update(0);
     }
   }
 }
@@ -36,12 +64,45 @@ class ToggleMetric {
   }
 
   reset() {
-    this.update(false);
+    this.update(false); 
   }
 }
 
 
-
+class ToggleMetricInt {
+    constructor(metric = { name: "toggleint" }) {
+      this.name = metric.name;
+      this.value = 0;
+      this.element = document.createElement("div");
+      this.toggle = document.createElement("button");
+      this.toggle.innerHTML = `<i class="square-empty text-icon"></i>${this.name}`;
+      var incrementor;
+      this.toggle.onclick = () => {
+        if (this.value >= 2) {incrementor = 0} else {incrementor = this.value += 1};
+        this.update(incrementor);
+        backupSurvey();
+      };
+      this.element.appendChild(this.toggle);
+    }
+  
+    update(newValue) {
+      this.value = newValue;
+      var square = "empty";
+      if (this.value == 0) {
+        square = "empty";
+      } else if (this.value == 1) {
+        square = "checked"
+      } else {
+        square = "x"
+      }
+      this.toggle.innerHTML = `<i class="square-${square} text-icon"></i>${this.name}`;
+      refreshIcons(this.toggle);
+    }
+  
+    reset() {
+      this.update(0); 
+    }
+  }
 
 
 /** A number input with increment/decrement buttons. Value is an integer. */
@@ -190,7 +251,7 @@ class RatingMetric {
 class TimerMetric {
   constructor(metric = { name: "Timer" }) {
     this.name = metric.name;
-    this.value = 0;
+    this.value = 0.0001;
     this.running = false;
     this.interval = null;
     this.element = document.createElement("div");
