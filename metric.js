@@ -305,7 +305,7 @@ class TimerMetric {
   }
 
   update(newValue = this.number.value) {
-    this.value = newValue;
+    this.value = parseFloat(newValue);
     this.number.value = newValue;
   }
 
