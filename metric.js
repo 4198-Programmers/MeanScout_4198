@@ -20,7 +20,7 @@ class ToggleMetricGrid {
       row.style = "grid-area: column-" + i.toString()
       for (let j = 0; j < 9; j++) {
         const toggle = new ToggleMetricInt({ name: `${[1, 4, 7].includes(j) ? "Cube" : "Cone"}` });
-        toggle.element.className = "toggle";
+        toggle.element.className = `toggle ${[2, 5].includes(j) ? "three" : ""}`;
         row.appendChild(toggle.element);
         this.value.push(toggle)
       }
