@@ -177,7 +177,7 @@ input[type=number] {
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    width: 100%;
+    width: 80%;
     grid-template-areas:
         'header header header '
         'column-0 column-1 column-2'
@@ -216,4 +216,8 @@ input[type=number] {
 .grid-footer {
     grid-area: footer;
     text-align: center;
+}
+
+.three {
+    margin-bottom: 20px;
 }
