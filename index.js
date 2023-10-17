@@ -155,7 +155,7 @@ function determineTeam(matchNo, positionStr) {
 function postSurvey(surveyJson){
   newJson = '{\n"data": {\n';
   JSON.stringify(surveyJson.forEach(metric => {
-    prettyName = metric.name.toLowerCase().split(/\(|\)|\ |\?/).join("").slice(0, 13);
+    prettyName = metric.name;
     if (typeof metric.value == "string") newJson += (`    "${prettyName}": { "content": "${metric.value}", "category": "${metric.category}" },\n`);
     else newJson += (`    "${prettyName}": { "content": "${JSON.stringify(metric.value)}", "category": "${metric.category}" },\n`);
   }));
@@ -163,13 +163,12 @@ function postSurvey(surveyJson){
   newJson = newJson.slice(0, -2);
   newJson += '\n}\n}';
 
-  console.log(newJson);
-
   let xhr = new XMLHttpRequest();
   xhr.open("POST", serverURL + "/scouting");
 
   xhr.setRequestHeader("Accept", "application/json");
   xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("x-pass-key", authPasswd.value);
 
   xhr.onload = function () {
     console.log(xhr.status);
