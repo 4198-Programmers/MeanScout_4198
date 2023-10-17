@@ -153,15 +153,15 @@ function determineTeam(matchNo, positionStr) {
 }
 
 function postSurvey(surveyJson){
-  newJson = "Data { data {\n";
+  newJson = '{\n"data": {\n';
   JSON.stringify(surveyJson.forEach(metric => {
     prettyName = metric.name.toLowerCase().split(/\(|\)|\ |\?/).join("").slice(0, 13);
     if (typeof metric.value == "string") newJson += (`    "${prettyName}": { "content": "${metric.value}", "category": "${metric.category}" },\n`);
-    else newJson += (`    "${prettyName}": { "gicontent": "${JSON.stringify(metric.value)}", "category": "${metric.category}" },\n`);
-    // console.log(metric);
-    // console.log((`    "${prettyName}": { content: "${metric.value}", category: "${metric.category}" },\n`));
+    else newJson += (`    "${prettyName}": { "content": "${JSON.stringify(metric.value)}", "category": "${metric.category}" },\n`);
   }));
-  newJson += '}}';
+  // remove last comma
+  newJson = newJson.slice(0, -2);
+  newJson += '\n}\n}';
 
   console.log(newJson);
 
@@ -391,8 +391,8 @@ function saveSurvey() {
     postSurvey([
       { name: "Team", value: teamMetric.value, category: "1Important" },
       { name: "Matchnum", value: matchMetric.value, category: "1Important" },
-      { name: "Absent", value: isAbsent, category: "1Important" },
-      { name: "Location", value: locationSelect.value, category: "1Important" },
+      { name: "Absent", value: isAbsent, category: "2Important" },
+      { name: "Location", value: locationSelect.value, category: "2Important" },
       { name: "Name", value: scoutName.value, category: "1Important"},
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value, category: metric.category } })
     ]);
