@@ -164,7 +164,7 @@ function postSurvey(surveyJson){
   newJson += '\n}\n}';
 
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", serverURL + "/scouting");
+  xhr.open("POST", serverURL + "/api/scouting");
 
   xhr.setRequestHeader("Accept", "application/json");
   xhr.setRequestHeader("Content-Type", "application/json");
@@ -213,7 +213,6 @@ function backupSurvey() {
     { name: "Auth", value: authPasswd.value },
     { name: "Absent", value: isAbsent },
     { name: "Name", value: scoutName.value},
-    ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
   ]);
 }
 
