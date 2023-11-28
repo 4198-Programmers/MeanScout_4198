@@ -92,7 +92,7 @@ const infiniteRechargeSurvey = {
     { "name": "Middle Cone", "type": "number", "category": "nTeleopCones" },
     { "name": "Bottom Cone", "type": "number", "category": "oTeleopCones" },
 
-    { "name": "Team attempts Charge?", "type": "toggle", "xCategory": "Endgame", "group": "Endgame (Charger)" },
+    { "name": "Team attempts Charge?", "type": "toggle", "category": "xEndgame", "group": "Endgame (Charger)" },
     { "name": "Charge station", "type": "select", "category": "yEndgame", "values":["No","Docked","Engaged"]},
     // { "name":"Links","type":"number"},
 
@@ -208,11 +208,11 @@ function postSurvey(surveyJson){
 /** Stores the current unsaved survey to `localStorage` */
 function backupSurvey() {
   localStorage.backup = JSON.stringify([
-    { name: "Team", value: teamMetric.value },
-    { name: "Matchnum", value: matchMetric.value },
-    { name: "Auth", value: authPasswd.value },
-    { name: "Absent", value: isAbsent },
-    { name: "Name", value: scoutName.value},
+    { name: "Team", value: teamMetric.value, category: teamMetric.category },
+    { name: "Matchnum", value: matchMetric.value, category: matchMetric.category },
+    { name: "Auth", value: authPasswd.value, category: authPasswd.category },
+    { name: "Absent", value: isAbsent, category: isAbsent.category },
+    { name: "Name", value: scoutName.value, category: scoutName.category },
     ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value, category: metric.category } })
   ]);
 }
@@ -366,12 +366,12 @@ function saveSurvey() {
     if (!confirm("Save match data OFFLINE?")) return;
     let surveys = JSON.parse(localStorage.surveys ?? "[]");
     surveys.push([
-      { name: "Team", value: teamMetric.value },
-      { name: "Matchnum", value: matchMetric.value },
-      { name: "Absent", value: isAbsent },
-      { name: "Location", value: locationSelect.value },
-      { name: "Name", value: scoutName.value},
-      ...gameMetrics.map(metric => { return { name: metric.name, value: JSON.stringify(metric.value) } })
+      { name: "Team", value: teamMetric.value, category: "1Important" },
+      { name: "Matchnum", value: matchMetric.value, category: "2Important" },
+      { name: "Absent", value: isAbsent, category: "3Important" },
+      { name: "Location", value: locationSelect.value, category: "5Important" },
+      { name: "Name", value: scoutName.value, category: "4Important" },
+      ...gameMetrics.map(metric => { return { name: metric.name, value: JSON.stringify(metric.value), category: metric.category } })
     ]);
     localStorage.surveys = JSON.stringify(surveys);
     resetSurvey(false);
@@ -380,11 +380,11 @@ function saveSurvey() {
     if (!confirm("Save match data online?")) return;
     let surveys = JSON.parse(localStorage.surveys ?? "[]");
     surveys.push([
-      { name: "Team", value: teamMetric.value },
-      { name: "Matchnum", value: matchMetric.value },
-      { name: "Absent", value: isAbsent },
-      { name: "Location", value: locationSelect.value },
-      { name: "Name", value: scoutName.value},
+      { name: "Team", value: teamMetric.value, category: "1Important" },
+      { name: "Matchnum", value: matchMetric.value, category: "2Important" },
+      { name: "Absent", value: isAbsent, category: "3Important" },
+      { name: "Location", value: locationSelect.value, category: "5Important" },
+      { name: "Name", value: scoutName.value, category: "4Important" },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
     postSurvey([
@@ -429,7 +429,18 @@ function downloadSurveys(askUser = true) {
   anchor.href = "data:text/plain;charset=utf-8,";
   switch (downloadSelect.value) {
     case "JSON":
-      anchor.href += encodeURIComponent(localStorage.surveys);
+      surveyJson = JSON.parse(localStorage.surveys);
+      newJson = '{\n"data": {\n';
+      JSON.stringify(surveyJson[0].forEach(metric => {
+        prettyName = metric.name;
+        if (typeof metric.value == "string") newJson += (`    "${prettyName}": { "content": "${metric.value.replace('"', "").replace('"', "")}", "category": "${metric.category}" },\n`);
+        else newJson += (`    "${prettyName}": { "content": "${JSON.stringify(metric.value)}", "category": "${metric.category}" },\n`);
+       }));
+       // remove last comma
+       newJson = newJson.slice(0, -2);
+       newJson += '\n}\n}';
+      anchor.href += encodeURIComponent(newJson);
+      console.log(newJson);
       anchor.download = fileName + ".json";
       break;
     case "CSV":
