@@ -68,44 +68,38 @@ const metricTypes = {
 
 const infiniteRechargeSurvey = {
   "metrics": [
-    { "name": "Team left community?", "type": "toggle", "group": "Auto (Qualitative)" },
-    { "name": "Team collected items?", "type": "toggle"},
-    { "name": "Auto Charge station", "type": "select", "values":["No","Docked","Engaged"]},
+    { "name": "Team left community?", "type": "toggle", "category": "aAuto1", "group": "Auto (Qualitative)" },
+    { "name": "Team collected items?", "type": "toggle", "category": "bAuto1"},
+    { "name": "Auto Charge station", "type": "select", "category": "cAuto1","values":["No","Docked","Engaged"]},
 
-    { "name": "toggletesting", "type": "togglegrid", "group":"Points" },
+    //{ "name": "toggletesting", "type": "togglegrid", "group":"Points" },
 
     // { "name": "teleopgrid", "type": "togglegrid", "group": "Teleop" },
 
-    // { "name": "Top Cones", "type": "number", "group": "Auto (Cones)"},
-    // { "name": "Middle Cones", "type": "number" },
-    // { "name": "Bottom Cones", "type": "number" },
-    // { "name": "Missed Cones", "type": "number" },
+    { "name": "Top Cubes", "type": "number", "category": "dAutoCubes", "group": "Auto (Cubes)"},
+    { "name": "Middle Cubes", "type": "number", "category": "eAutoCubes"},
+    { "name": "Bottom Cubes", "type": "number", "category": "fAutoCubes" },
 
-    // { "name": "Top Cube", "type": "number", "group": "Teleop (Cubes)"},
-    // { "name": "Middle Cube", "type": "number" },
-    // { "name": "Bottom Cube", "type": "number" },
-    // { "name": "Missed Cube", "type": "number" },
+    { "name": "Top Cones", "type": "number", "category": "gAutoCones", "group": "Auto (Cones)"},
+    { "name": "Middle Cones", "type": "number", "category": "hAutoCones" },
+    { "name": "Bottom Cones", "type": "number", "category": "iAutoCones" },
 
-    // { "name": "Top Cone", "type": "number", "group": "Teleop (Cones)"},
-    // { "name": "Middle Cone", "type": "number" },
-    // { "name": "Bottom Cone", "type": "number" },
-    // { "name": "Missed Cone", "type": "number" },
+    { "name": "Top Cube", "type": "number", "category": "jTeleopCubes", "group": "Teleop (Cubes)"},
+    { "name": "Middle Cube", "type": "number", "category": "kTeleopCubes" },
+    { "name": "Bottom Cube", "type": "number", "category": "lTeleopCubes", },
 
-    { "name": "Defense play Time:", "group":"Defense","type":"timer" }, //i want to make this a slider and add more 
-    { "name":"Defensive rating","type":"rating"},
+    { "name": "Top Cone", "type": "number", "category": "mTeleopCones", "group": "Teleop (Cones)"},
+    { "name": "Middle Cone", "type": "number", "category": "nTeleopCones" },
+    { "name": "Bottom Cone", "type": "number", "category": "oTeleopCones" },
 
-    { "name": "Team attempts Charge?", "type": "toggle", "group": "Endgame (Charger)" },
-    { "name": "Charge station", "type": "select", "values":["No","Docked","Engaged"]},
+    { "name": "Team attempts Charge?", "type": "toggle", "category": "xEndgame", "group": "Endgame (Charger)" },
+    { "name": "Charge station", "type": "select", "category": "yEndgame", "values":["No","Docked","Engaged"]},
     // { "name":"Links","type":"number"},
 
-    { "name": "Any robot problems?", "type": "select", "values": ["No Problems", "Solid Light (Disabled)", "No Light (Lost Power)", "Minor Hardware Failure", "Major Hardware Failure"], "group": "Extra" },
-    { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here..." },
-    { "name": "Fouls", "type": "text", "tip":"Enter in if bot was involved with a foul..."},
-    { "name": "Drive Team Rating", "type": "text", "tip": "Enter driver data here..." },
-    { "name": "Play style summary", "type":"text", "tip":"Sentence or two on play style..."}]
+    { "name": "Extra Notes", "type": "text", "category": "zNotes", "tip": "Fouls, Disabled,etc..." }]
 };
 
-// const matchListings = [[2509, 6146, 5929, 4239, 2531, 4207], [8188, 2654, 3313, 4536, 7038, 3691], [7235, 3630, 4226, 6045, 8878, 7858], [4360, 3134, 2470, 3300, 7257, 5658], [2175, 876, 3058, 8887, 877, 6453], [3277, 4238, 8422, 5172, 537, 7677], [2883, 7048, 6628, 3216, 7028, 4607], [5638, 4539, 8255, 3026, 4663, 3293], [4198, 2508, 8586, 3275, 3740, 6045], [3630, 3691, 8878, 876, 3300, 3134], [2531, 7235, 7257, 2654, 2175, 3277], [6628, 7677, 7858, 2509, 2883, 877], [5172, 4226, 8188, 4207, 7048, 4663], [6146, 3216, 3026, 3740, 7038, 4360], [4198, 8422, 4607, 4536, 5658, 2508], [3275, 537, 6453, 4239, 2470, 4539], [5929, 3313, 3293, 4238, 8586, 8887], [7028, 8255, 6045, 5638, 3058, 2531], [877, 6146, 2654, 3630, 5172, 3300], [8188, 4536, 4663, 3740, 6628, 3216], [2508, 7048, 3691, 7235, 4239, 3026], [537, 2509, 7257, 8878, 6453, 3313], [4238, 4539, 7858, 7038, 4207, 3134], [8255, 2470, 2883, 8887, 8422, 876], [5658, 5929, 7677, 5638, 3275, 7028], [8586, 4360, 2175, 4607, 3293, 3058], [4226, 4198, 7048, 3277, 3313, 3630], [7235, 877, 4663, 4536, 7257, 4239], [2883, 8887, 4539, 3691, 2531, 6146], [3740, 6453, 2509, 3300, 8255, 4238], [7028, 2175, 8878, 8422, 4207, 8586], [3058, 5658, 7038, 2508, 6628, 4226], [5638, 8188, 3216, 4607, 3277, 3275], [5172, 6045, 3134, 3026, 537, 876], [3293, 7858, 2470, 5929, 2654, 4198], [3630, 4360, 4536, 7677, 2509, 8586], [7038, 2883, 7028, 3740, 2175, 3300], [7257, 4539, 3691, 6628, 5638, 8422], [3275, 6146, 5172, 4226, 8887, 8255], [3134, 4238, 6453, 8188, 4198, 7235], [7677, 3026, 8878, 3058, 3313, 2470], [2531, 876, 3277, 5658, 4360, 7858], [2508, 5929, 877, 7048, 3216, 537], [4663, 6045, 4607, 4207, 3293, 2654], [7038, 4239, 5638, 3630, 2883, 8586], [6628, 3058, 5172, 6146, 7235, 3740], [4360, 7028, 4226, 2470, 3691, 6453], [3313, 5658, 4198, 8255, 5929, 2175], [3134, 8422, 7257, 6045, 2654, 3216], [4607, 4239, 4238, 7858, 4663, 876], [877, 3300, 537, 3293, 8188, 2531], [8887, 7677, 3277, 2508, 2509, 4539], [8878, 4536, 4207, 3275, 3026, 7048], [3313, 5638, 3740, 7235, 8422, 4360], [5929, 4239, 3134, 4226, 4607, 2883], [8586, 7257, 7028, 8188, 7858, 6146], [8887, 3058, 537, 3300, 3216, 4198], [3293, 876, 3630, 2531, 6628, 3275], [2654, 7038, 3026, 6453, 3277, 7048], [2175, 4238, 4536, 6045, 2508, 2470], [5658, 8878, 2509, 4539, 4663, 5172], [7677, 4207, 877, 3691, 8255, 7235], [7257, 3275, 3293, 3058, 3134, 2883], [6453, 3026, 8188, 8422, 7858, 5929], [876, 2654, 2508, 3313, 7028, 6146], [3630, 4198, 4539, 7048, 5172, 4360], [5658, 6628, 4238, 4239, 8878, 8887], [2509, 4607, 7038, 537, 3691, 6045], [2470, 3740, 4207, 3277, 5638, 877], [3216, 4226, 4536, 2531, 8586, 8255], [6146, 3300, 4663, 2175, 7677, 4198], [2883, 8188, 4239, 8878, 4360, 2654], [6045, 3630, 8887, 6453, 7028, 5658], [8422, 2470, 3275, 877, 3293, 7038], [7858, 3216, 3058, 3691, 3313, 5172], [3026, 2175, 5638, 876, 4226, 2509], [7048, 3740, 2531, 7257, 7677, 4238], [4207, 2508, 8255, 3134, 8586, 6628], [4539, 3277, 3300, 5929, 4607, 4536], [537, 7235, 3313, 4663, 3275, 2883], [3216, 5172, 4239, 2470, 8188, 2175], [2654, 3058, 8422, 4238, 2509, 3630], [3691, 876, 4207, 4198, 7257, 3740], [877, 6045, 6628, 4360, 3277, 5929], [3293, 537, 4226, 7028, 4536, 7677], [8586, 3300, 7235, 4539, 3026, 5658], [4663, 2531, 8878, 7038, 6453, 2508], [7048, 8887, 6146, 7858, 3134, 5638], [8255, 877, 3740, 4607, 3630, 8188]];
+//const matchListings = [[2502, 2846, 4664, 2207, 3082, 2450], [2225, 5278, 2606, 8787, 2177, 4632], [2855, 2470, 4663, 4536, 3038, 2549], [3610, 2823, 2513, 7258, 2500, 4215], [3454, 2491, 5434, 7849, 7068, 3206], [2879, 5271, 8234, 2515, 3018, 4225], [4277, 2052, 3630, 4198, 7235, 3278], [5913, 1816, 3407, 4549, 8255, 7019], [2509, 3202, 2498, 2181, 3026, 2518], [9157, 2508, 6709, 5996, 3871, 3007], [3610, 7258, 7850, 4536, 2855, 2225], [7068, 2502, 2823, 4663, 5278, 2450], [2515, 7849, 8787, 2207, 2513, 2177], [2846, 8234, 4198, 5271, 2491, 2549], [3407, 7235, 4632, 3454, 4225, 5913], [3038, 2606, 2509, 3278, 2498, 3082], [2052, 4664, 6709, 7019, 3202, 3018], [2470, 3206, 4549, 3630, 5996, 2508], [3026, 3007, 4215, 2518, 7850, 5434], [8255, 2500, 2181, 2879, 9157, 4277], [3871, 4198, 3610, 7849, 2207, 1816], [2225, 3454, 2515, 2450, 2491, 2502], [3407, 2513, 3278, 5271, 7068, 2855], [8787, 3082, 5913, 2549, 4225, 3202], [7019, 5996, 4536, 2846, 4632, 2498], [2508, 2509, 2518, 5434, 2052, 4663], [3026, 5278, 8234, 3630, 8255, 2879], [2181, 2823, 3018, 1816, 7850, 3038], [3206, 4215, 3871, 7258, 4549, 4664], [3007, 6709, 2177, 4277, 2500, 7235], [2491, 2606, 9157, 3202, 2470, 3610], [2498, 7849, 5996, 3278, 2502, 8787], [2518, 4536, 2515, 4198, 5913, 7068], [4663, 2207, 2225, 2052, 3407, 2879], [2823, 2508, 3082, 4632, 3018, 8255], [5434, 2855, 5278, 4664, 8234, 1816], [2177, 7258, 5271, 3038, 3454, 3007], [2450, 9157, 7235, 7850, 2549, 4549], [4215, 3630, 2470, 2181, 2846, 6709], [3026, 4225, 2513, 4277, 3206, 2606], [7019, 3871, 2502, 2500, 2509, 2491], [5996, 2518, 2879, 2823, 3407, 7849], [3082, 4663, 4632, 8234, 3610, 2515], [8255, 2207, 3454, 3038, 5434, 3202], [1816, 3007, 7258, 2498, 2450, 2052], [2855, 3630, 2846, 5913, 2177, 9157], [3206, 4664, 2181, 2225, 3018, 7235], [3871, 7068, 2549, 2606, 7019, 3026], [2508, 3278, 4225, 6709, 2513, 4536], [5271, 8787, 4277, 4549, 4215, 2509], [7850, 2470, 2500, 5278, 4198, 3454], [2491, 2515, 3082, 5996, 1816, 2052], [2846, 2450, 3202, 4632, 2879, 3038], [3630, 3007, 2498, 3018, 4664, 3407], [7235, 2549, 8255, 3871, 2518, 7258], [2177, 3278, 2181, 2508, 3026, 3610], [2502, 6709, 4549, 2513, 5434, 2606], [5271, 2509, 2207, 5278, 4536, 9157], [8234, 5913, 7850, 2470, 4277, 7849], [2500, 7019, 2823, 2855, 8787, 3206], [7068, 4663, 4225, 4215, 2225, 4198], [2491, 4632, 7258, 3082, 2518, 3630], [4664, 2498, 3454, 2515, 2549, 2508], [2879, 3610, 2846, 2502, 5434, 3007], [3202, 7235, 5996, 2513, 5271, 5278], [4536, 2450, 3407, 8234, 2181, 3871], [6709, 3206, 1816, 2509, 8787, 7850], [8255, 4198, 2052, 4215, 2606, 2855], [3018, 4277, 2177, 9157, 4663, 7019], [3278, 2225, 2470, 2823, 4549, 2207], [4225, 3038, 2500, 5913, 7849, 3026], [3082, 2879, 7068, 7235, 2498, 5271], [2549, 4632, 2513, 3007, 2181, 2491], [5278, 1816, 2515, 2518, 2846, 3206], [8787, 3407, 2508, 7258, 2502, 4198], [4664, 7850, 4663, 2606, 8255, 5996], [3454, 4215, 7019, 9157, 8234, 3278], [2509, 2177, 3871, 4225, 2823, 2470], [5434, 4536, 3630, 3202, 2225, 2500], [7849, 2855, 3018, 2450, 4549, 3026], [3610, 3038, 2207, 7068, 6709, 4277], [3206, 5271, 5913, 2052, 2181, 2502], [7235, 7258, 8787, 4663, 2491, 2846], [4198, 9157, 2518, 2513, 2879, 4664], [3007, 2515, 8255, 2470, 7019, 2509], [2606, 3454, 4536, 1816, 3630, 2823], [2500, 3278, 7849, 2549, 3082, 2225], [7850, 3202, 7068, 2177, 2508, 8234], [4632, 4277, 5434, 2498, 3871, 2855], [3018, 5996, 2450, 2207, 5913, 4215], [4549, 2052, 3038, 4225, 3610, 5278], [6709, 3026, 2491, 3407, 2515, 5271]];
 const matchListings = []
 
 matchMetric.oninput = () => determineTeam(matchMetric.value, scoutLocation);
@@ -159,18 +153,22 @@ function determineTeam(matchNo, positionStr) {
 }
 
 function postSurvey(surveyJson){
-  newJson = "{\n";
+  newJson = '{\n"data": {\n';
   JSON.stringify(surveyJson.forEach(metric => {
-    prettyName = metric.name.toLowerCase().split(/\(|\)|\ |\?/).join("").slice(0, 13);
-    if (typeof metric.value == "string") newJson += ('    "' + prettyName + '": "' + metric.value + '",\n');
-    else newJson += ('    "' + prettyName + '": ' + JSON.stringify(metric.value) + ',\n');
+    prettyName = metric.name;
+    if (typeof metric.value == "string") newJson += (`    "${prettyName}": { "content": "${metric.value}", "category": "${metric.category}" },\n`);
+    else newJson += (`    "${prettyName}": { "content": "${JSON.stringify(metric.value)}", "category": "${metric.category}" },\n`);
   }));
-  newJson += '    "password": "' + authPasswd.value + '"\n}';
+  // remove last comma
+  newJson = newJson.slice(0, -2);
+  newJson += '\n}\n}';
+
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", serverURL + "/scouting");
+  xhr.open("POST", serverURL + "/api/scouting");
 
   xhr.setRequestHeader("Accept", "application/json");
   xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("x-pass-key", authPasswd.value);
 
   xhr.onload = function () {
     console.log(xhr.status);
@@ -210,12 +208,12 @@ function postSurvey(surveyJson){
 /** Stores the current unsaved survey to `localStorage` */
 function backupSurvey() {
   localStorage.backup = JSON.stringify([
-    { name: "Team", value: teamMetric.value },
-    { name: "Matchnum", value: matchMetric.value },
-    { name: "Auth", value: authPasswd.value },
-    { name: "Absent", value: isAbsent },
-    { name: "Name", value: scoutName.value},
-    ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
+    { name: "Team", value: teamMetric.value, category: teamMetric.category },
+    { name: "Matchnum", value: matchMetric.value, category: matchMetric.category },
+    { name: "Auth", value: authPasswd.value, category: authPasswd.category },
+    { name: "Absent", value: isAbsent, category: isAbsent.category },
+    { name: "Name", value: scoutName.value, category: scoutName.category },
+    ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value, category: metric.category } })
   ]);
 }
 
@@ -305,6 +303,7 @@ function loadTemplate(newTemplate = exampleTemplate) {
       customMetricsDiv.append(groupSpan);
     }
     customMetricsDiv.append(metricObject.element);
+    // console.log(metricObject)
     gameMetrics.push(metricObject);
   });
 }
@@ -367,12 +366,12 @@ function saveSurvey() {
     if (!confirm("Save match data OFFLINE?")) return;
     let surveys = JSON.parse(localStorage.surveys ?? "[]");
     surveys.push([
-      { name: "Team", value: teamMetric.value },
-      { name: "Matchnum", value: matchMetric.value },
-      { name: "Absent", value: isAbsent },
-      { name: "Location", value: locationSelect.value },
-      { name: "Name", value: scoutName.value},
-      ...gameMetrics.map(metric => { return { name: metric.name, value: JSON.stringify(metric.value) } })
+      { name: "Team", value: teamMetric.value, category: "1Important" },
+      { name: "Matchnum", value: matchMetric.value, category: "2Important" },
+      { name: "Absent", value: isAbsent, category: "3Important" },
+      { name: "Location", value: locationSelect.value, category: "5Important" },
+      { name: "Name", value: scoutName.value, category: "4Important" },
+      ...gameMetrics.map(metric => { return { name: metric.name, value: JSON.stringify(metric.value), category: metric.category } })
     ]);
     localStorage.surveys = JSON.stringify(surveys);
     resetSurvey(false);
@@ -381,20 +380,20 @@ function saveSurvey() {
     if (!confirm("Save match data online?")) return;
     let surveys = JSON.parse(localStorage.surveys ?? "[]");
     surveys.push([
-      { name: "Team", value: teamMetric.value },
-      { name: "Matchnum", value: matchMetric.value },
-      { name: "Absent", value: isAbsent },
-      { name: "Location", value: locationSelect.value },
-      { name: "Name", value: scoutName.value},
+      { name: "Team", value: teamMetric.value, category: "1Important" },
+      { name: "Matchnum", value: matchMetric.value, category: "2Important" },
+      { name: "Absent", value: isAbsent, category: "3Important" },
+      { name: "Location", value: locationSelect.value, category: "5Important" },
+      { name: "Name", value: scoutName.value, category: "4Important" },
       ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
     ]);
     postSurvey([
-      { name: "Team", value: teamMetric.value },
-      { name: "Matchnum", value: matchMetric.value },
-      { name: "Absent", value: isAbsent },
-      { name: "Location", value: locationSelect.value },
-      { name: "Name", value: scoutName.value},
-      ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
+      { name: "Team", value: teamMetric.value, category: "1Important" },
+      { name: "Matchnum", value: matchMetric.value, category: "2Important" },
+      { name: "Absent", value: isAbsent, category: "3Important" },
+      { name: "Location", value: locationSelect.value, category: "5Important" },
+      { name: "Name", value: scoutName.value, category: "4Important"},
+      ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value, category: metric.category } })
     ]);
   }
 }
@@ -430,7 +429,18 @@ function downloadSurveys(askUser = true) {
   anchor.href = "data:text/plain;charset=utf-8,";
   switch (downloadSelect.value) {
     case "JSON":
-      anchor.href += encodeURIComponent(localStorage.surveys);
+      surveyJson = JSON.parse(localStorage.surveys);
+      newJson = '{\n"data": {\n';
+      JSON.stringify(surveyJson[0].forEach(metric => {
+        prettyName = metric.name;
+        if (typeof metric.value == "string") newJson += (`    "${prettyName}": { "content": "${metric.value.replace('"', "").replace('"', "")}", "category": "${metric.category}" },\n`);
+        else newJson += (`    "${prettyName}": { "content": "${JSON.stringify(metric.value)}", "category": "${metric.category}" },\n`);
+       }));
+       // remove last comma
+       newJson = newJson.slice(0, -2);
+       newJson += '\n}\n}';
+      anchor.href += encodeURIComponent(newJson);
+      console.log(newJson);
       anchor.download = fileName + ".json";
       break;
     case "CSV":

@@ -1,7 +1,8 @@
 // After creating a new metric, don't forget to add it to `metricTypes`, the example template, and the README.
 class ToggleMetricGrid {
-  constructor(metric = { name: "togglegrid"}) {
+  constructor(metric = { name: "togglegrid", category: "category"}) {
     this.name = metric.name;
+    this.category = metric.category;
     this.element = document.createElement("div");
     this.value = [];
     this.element.className = "grid-container"; // Add a class name for styling
@@ -44,8 +45,9 @@ class ToggleMetricGrid {
 }
 
 class ToggleMetric {
-  constructor(metric = { name: "toggle" }) {
+  constructor(metric = { name: "toggle", category: "category" }) {
     this.name = metric.name;
+    this.category = metric.category;
     this.value = false;
     this.element = document.createElement("div");
     this.toggle = document.createElement("button");
@@ -70,8 +72,9 @@ class ToggleMetric {
 
 
 class ToggleMetricInt {
-    constructor(metric = { name: "toggleint" }) {
+    constructor(metric = { name: "toggleint", category: "category" }) {
       this.name = metric.name;
+      this.category = metric.category;
       this.value = 0;
       this.element = document.createElement("div");
       this.toggle = document.createElement("button");
@@ -107,8 +110,9 @@ class ToggleMetricInt {
 
 /** A number input with increment/decrement buttons. Value is an integer. */
 class NumberMetric {
-  constructor(metric = { name: "Number" }) {
+  constructor(metric = { name: "Number", category: "category" }) {
     this.name = metric.name;
+    this.category = metric.category;
     this.value = 0;
     this.element = document.createElement("div");
     this.element.innerHTML = this.name + "<br>";
@@ -154,8 +158,9 @@ class NumberMetric {
  * There must be an array of string `values` to create options for the selector.
  */
 class SelectMetric {
-  constructor(metric = { name: "Select", values: [] }) {
+  constructor(metric = { name: "Select", values: [], category: "category" }) {
     this.name = metric.name;
+    this.category = metric.category;
     this.values = metric.values;
     this.value = this.values[0];
     this.element = document.createElement("div");
@@ -186,8 +191,9 @@ class SelectMetric {
  * Setting a `tip` value will add a placeholder within the input field.
  */
 class TextMetric {
-  constructor(metric = { name: "Text", tip: "" }) {
+  constructor(metric = { name: "Text", tip: "", category: "category" }) {
     this.name = metric.name;
+    this.category = metric.category;
     this.value = "";
     this.tip = metric.tip;
     this.element = document.createElement("div");
@@ -214,8 +220,9 @@ class TextMetric {
 
 /** A star rating bar. Value is a number (0-4). */
 class RatingMetric {
-  constructor(metric = { name: "Rating" }) {
+  constructor(metric = { name: "Rating", category: "category" }) {
     this.name = metric.name;
+    this.category = metric.category;
     this.value = 0;
     this.element = document.createElement("div");
     this.element.innerHTML = this.name + "<br>";
@@ -249,8 +256,9 @@ class RatingMetric {
 
 /** A number input with timing controls. Value is a decimal. */
 class TimerMetric {
-  constructor(metric = { name: "Timer" }) {
+  constructor(metric = { name: "Timer", category: "category" }) {
     this.name = metric.name;
+    this.category = metric.category;
     this.value = 0.0001;
     this.running = false;
     this.interval = null;
