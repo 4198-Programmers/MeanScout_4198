@@ -66,37 +66,37 @@ const metricTypes = {
   ]
 };*/
 
-const infiniteRechargeSurvey = {
-  "metrics": [
-    { "name": "Team left community?", "type": "toggle", "category": "aAuto1", "group": "Auto (Qualitative)" },
-    { "name": "Team collected items?", "type": "toggle", "category": "bAuto1"},
-    { "name": "Auto Charge station", "type": "select", "category": "cAuto1","values":["No","Docked","Engaged"]},
+const survey = {
+    "metrics": [
+        { "name": "Center Line Pick Up?", "type": "toggle", "category": "abilities", "group": "Auto (Qualitative)" },
+        { "name": "Leave Starting Zone?", "type": "toggle", "category": "abilities"},
 
-    //{ "name": "toggletesting", "type": "togglegrid", "group":"Points" },
+        { "name": "Scored in Amp", "type": "number", "category": "auto-scoring", "group": "Auto (Notes)"},
+        { "name": "Missed in Amp", "type": "number", "category": "auto-scoring"},
+        { "name": "Scored in Speaker", "type": "number", "category": "auto-scoring"},
+        { "name": "Missed in Speaker", "type": "number", "category": "auto-scoring"},
 
-    // { "name": "teleopgrid", "type": "togglegrid", "group": "Teleop" },
+        { "name": "Note Scored in Amp", "type": "number", "category": "teleop-scoring", "group": "Teleop (Qualitative)"},
+        { "name": "Note Missed in Amp", "type": "number", "category": "teleop-scoring"},
+        { "name": "Scored in Speaker", "type": "number", "category": "teleop-scoring"},
+        { "name": "Scored in Amplified", "type": "number", "category": "teleop-scoring"},
+        { "name": "Missed in Speaker", "type": "number", "category": "teleop-scoring"},
+        { "name": "Note Scored in Trap", "type": "number", "category": "teleop-scoring"},
+        { "name": "Note Missed in Trap", "type": "number", "category": "teleop-scoring"},
 
-    { "name": "Top Cubes", "type": "number", "category": "dAutoCubes", "group": "Auto (Cubes)"},
-    { "name": "Middle Cubes", "type": "number", "category": "eAutoCubes"},
-    { "name": "Bottom Cubes", "type": "number", "category": "fAutoCubes" },
+        { "name": "Spotlit?", "type": "toggle", "category": "abilities", "group": "Endgame (Qualitative)" },
+        { "name": "Stage Level", "type": "select", "category": "abilities", "values": ["None","Parked","Onstage","Harmonized"]},
+        { "name": "Can pick up from ground?", "type": "toggle", "category": "abilities"},
+        { "name": "Stage Time", "type": "timer", "category": "timers"},
 
-    { "name": "Top Cones", "type": "number", "category": "gAutoCones", "group": "Auto (Cones)"},
-    { "name": "Middle Cones", "type": "number", "category": "hAutoCones" },
-    { "name": "Bottom Cones", "type": "number", "category": "iAutoCones" },
+        { "name": "Defense Skill", "type": "rating", "category": "ratings", "group": "Ratings (Qualitative)" },
+        { "name": "Driver Skill", "type": "rating", "category": "ratings"},
+        { "name": "Intake Consistency", "type": "rating", "category": "ratings"},
+        { "name": "Speed", "type": "rating", "category": "ratings"},
+        { "name": "Stability", "type": "rating", "category": "ratings"},
 
-    { "name": "Top Cube", "type": "number", "category": "jTeleopCubes", "group": "Teleop (Cubes)"},
-    { "name": "Middle Cube", "type": "number", "category": "kTeleopCubes" },
-    { "name": "Bottom Cube", "type": "number", "category": "lTeleopCubes", },
-
-    { "name": "Top Cone", "type": "number", "category": "mTeleopCones", "group": "Teleop (Cones)"},
-    { "name": "Middle Cone", "type": "number", "category": "nTeleopCones" },
-    { "name": "Bottom Cone", "type": "number", "category": "oTeleopCones" },
-
-    { "name": "Team attempts Charge?", "type": "toggle", "category": "xEndgame", "group": "Endgame (Charger)" },
-    { "name": "Charge station", "type": "select", "category": "yEndgame", "values":["No","Docked","Engaged"]},
-    // { "name":"Links","type":"number"},
-
-    { "name": "Extra Notes", "type": "text", "category": "zNotes", "tip": "Fouls, Disabled,etc..." }]
+        { "name": "Notes", "type": "text", "category": "data", "tip": "Fouls, Disabled, etc..." }
+    ]
 };
 
 //const matchListings = [[2502, 2846, 4664, 2207, 3082, 2450], [2225, 5278, 2606, 8787, 2177, 4632], [2855, 2470, 4663, 4536, 3038, 2549], [3610, 2823, 2513, 7258, 2500, 4215], [3454, 2491, 5434, 7849, 7068, 3206], [2879, 5271, 8234, 2515, 3018, 4225], [4277, 2052, 3630, 4198, 7235, 3278], [5913, 1816, 3407, 4549, 8255, 7019], [2509, 3202, 2498, 2181, 3026, 2518], [9157, 2508, 6709, 5996, 3871, 3007], [3610, 7258, 7850, 4536, 2855, 2225], [7068, 2502, 2823, 4663, 5278, 2450], [2515, 7849, 8787, 2207, 2513, 2177], [2846, 8234, 4198, 5271, 2491, 2549], [3407, 7235, 4632, 3454, 4225, 5913], [3038, 2606, 2509, 3278, 2498, 3082], [2052, 4664, 6709, 7019, 3202, 3018], [2470, 3206, 4549, 3630, 5996, 2508], [3026, 3007, 4215, 2518, 7850, 5434], [8255, 2500, 2181, 2879, 9157, 4277], [3871, 4198, 3610, 7849, 2207, 1816], [2225, 3454, 2515, 2450, 2491, 2502], [3407, 2513, 3278, 5271, 7068, 2855], [8787, 3082, 5913, 2549, 4225, 3202], [7019, 5996, 4536, 2846, 4632, 2498], [2508, 2509, 2518, 5434, 2052, 4663], [3026, 5278, 8234, 3630, 8255, 2879], [2181, 2823, 3018, 1816, 7850, 3038], [3206, 4215, 3871, 7258, 4549, 4664], [3007, 6709, 2177, 4277, 2500, 7235], [2491, 2606, 9157, 3202, 2470, 3610], [2498, 7849, 5996, 3278, 2502, 8787], [2518, 4536, 2515, 4198, 5913, 7068], [4663, 2207, 2225, 2052, 3407, 2879], [2823, 2508, 3082, 4632, 3018, 8255], [5434, 2855, 5278, 4664, 8234, 1816], [2177, 7258, 5271, 3038, 3454, 3007], [2450, 9157, 7235, 7850, 2549, 4549], [4215, 3630, 2470, 2181, 2846, 6709], [3026, 4225, 2513, 4277, 3206, 2606], [7019, 3871, 2502, 2500, 2509, 2491], [5996, 2518, 2879, 2823, 3407, 7849], [3082, 4663, 4632, 8234, 3610, 2515], [8255, 2207, 3454, 3038, 5434, 3202], [1816, 3007, 7258, 2498, 2450, 2052], [2855, 3630, 2846, 5913, 2177, 9157], [3206, 4664, 2181, 2225, 3018, 7235], [3871, 7068, 2549, 2606, 7019, 3026], [2508, 3278, 4225, 6709, 2513, 4536], [5271, 8787, 4277, 4549, 4215, 2509], [7850, 2470, 2500, 5278, 4198, 3454], [2491, 2515, 3082, 5996, 1816, 2052], [2846, 2450, 3202, 4632, 2879, 3038], [3630, 3007, 2498, 3018, 4664, 3407], [7235, 2549, 8255, 3871, 2518, 7258], [2177, 3278, 2181, 2508, 3026, 3610], [2502, 6709, 4549, 2513, 5434, 2606], [5271, 2509, 2207, 5278, 4536, 9157], [8234, 5913, 7850, 2470, 4277, 7849], [2500, 7019, 2823, 2855, 8787, 3206], [7068, 4663, 4225, 4215, 2225, 4198], [2491, 4632, 7258, 3082, 2518, 3630], [4664, 2498, 3454, 2515, 2549, 2508], [2879, 3610, 2846, 2502, 5434, 3007], [3202, 7235, 5996, 2513, 5271, 5278], [4536, 2450, 3407, 8234, 2181, 3871], [6709, 3206, 1816, 2509, 8787, 7850], [8255, 4198, 2052, 4215, 2606, 2855], [3018, 4277, 2177, 9157, 4663, 7019], [3278, 2225, 2470, 2823, 4549, 2207], [4225, 3038, 2500, 5913, 7849, 3026], [3082, 2879, 7068, 7235, 2498, 5271], [2549, 4632, 2513, 3007, 2181, 2491], [5278, 1816, 2515, 2518, 2846, 3206], [8787, 3407, 2508, 7258, 2502, 4198], [4664, 7850, 4663, 2606, 8255, 5996], [3454, 4215, 7019, 9157, 8234, 3278], [2509, 2177, 3871, 4225, 2823, 2470], [5434, 4536, 3630, 3202, 2225, 2500], [7849, 2855, 3018, 2450, 4549, 3026], [3610, 3038, 2207, 7068, 6709, 4277], [3206, 5271, 5913, 2052, 2181, 2502], [7235, 7258, 8787, 4663, 2491, 2846], [4198, 9157, 2518, 2513, 2879, 4664], [3007, 2515, 8255, 2470, 7019, 2509], [2606, 3454, 4536, 1816, 3630, 2823], [2500, 3278, 7849, 2549, 3082, 2225], [7850, 3202, 7068, 2177, 2508, 8234], [4632, 4277, 5434, 2498, 3871, 2855], [3018, 5996, 2450, 2207, 5913, 4215], [4549, 2052, 3038, 4225, 3610, 5278], [6709, 3026, 2491, 3407, 2515, 5271]];
@@ -104,7 +104,7 @@ const matchListings = []
 
 matchMetric.oninput = () => determineTeam(matchMetric.value, scoutLocation);
 
-const exampleTemplate = infiniteRechargeSurvey;
+const exampleTemplate = survey;
 
 let currentTemplate = JSON.parse(localStorage.template ?? JSON.stringify(exampleTemplate));
 loadTemplate(currentTemplate);
@@ -200,8 +200,6 @@ function postSurvey(surveyJson){
 	 }
   };
   xhr.send(newJson);
-
-
   
 }
 
@@ -422,27 +420,34 @@ function resetSurvey(askUser = true) {
  */
 function downloadSurveys(askUser = true) {
   if (askUser) if (!confirm("Are you sure you would like to export collected data?")) return;
+
   var fileName = localStorage.location.replace(" ", "_").toLowerCase();
   var today = new Date();
   fileName = fileName + "_" + today.getHours() + "h" + today.getMinutes() + "m";
   const anchor = document.createElement("a");
   anchor.href = "data:text/plain;charset=utf-8,";
+
   switch (downloadSelect.value) {
     case "JSON":
       surveyJson = JSON.parse(localStorage.surveys);
       newJson = '{\n"data": {\n';
+
       JSON.stringify(surveyJson[0].forEach(metric => {
         prettyName = metric.name;
         if (typeof metric.value == "string") newJson += (`    "${prettyName}": { "content": "${metric.value.replace('"', "").replace('"', "")}", "category": "${metric.category}" },\n`);
         else newJson += (`    "${prettyName}": { "content": "${JSON.stringify(metric.value)}", "category": "${metric.category}" },\n`);
        }));
+
        // remove last comma
        newJson = newJson.slice(0, -2);
        newJson += '\n}\n}';
+
       anchor.href += encodeURIComponent(newJson);
       console.log(newJson);
       anchor.download = fileName + ".json";
+
       break;
+
     case "CSV":
       let surveys = JSON.parse(localStorage.surveys);
       let csv = "";
