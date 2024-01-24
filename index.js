@@ -1,5 +1,5 @@
 if ("serviceWorker" in navigator) {
-  window.onload = () => navigator.serviceWorker.register("./sw.js");
+    window.onload = () => navigator.serviceWorker.register("./sw.js");
 }
 
 const menuToggleButton = document.querySelector("#menu-toggle-btn");
@@ -45,14 +45,14 @@ let serverURL = "https://data.team4198.org:8000";
 
 // If you make a new type, be sure to add it here
 const metricTypes = {
-  "toggle": ToggleMetric,
-  "togglegrid": ToggleMetricGrid,
-  "number": NumberMetric,
-  "select": SelectMetric,
-  "text": TextMetric,
-  "rating": RatingMetric,
-  "timer": TimerMetric,
-  };
+    "toggle": ToggleMetric,
+    "togglegrid": ToggleMetricGrid,
+    "number": NumberMetric,
+    "select": SelectMetric,
+    "text": TextMetric,
+    "rating": RatingMetric,
+    "timer": TimerMetric,
+};
 
 // The example template showcases each metric type
 /*const exampleTemplate = {
@@ -69,30 +69,30 @@ const metricTypes = {
 const survey = {
     "metrics": [
         { "name": "Center Line Pick Up?", "type": "toggle", "category": "abilities", "group": "Auto (Qualitative)", "identifier": "auto-center-line-pick-up" },
-        { "name": "Leave Starting Zone?", "type": "toggle", "category": "abilities", "identifier": "auto-leave-starting-zone"},
+        { "name": "Leave Starting Zone?", "type": "toggle", "category": "abilities", "identifier": "auto-leave-starting-zone" },
 
-        { "name": "Scored in Amp", "type": "number", "category": "auto-scoring", "group": "Auto (Notes)", "identifier": "auto-scored-in-amp"},
-        { "name": "Missed in Amp", "type": "number", "category": "auto-scoring", "identifier": "auto-missed-in-amp"},
-        { "name": "Scored in Speaker", "type": "number", "category": "auto-scoring", "identifier": "auto-scored-in-speaker"},
-        { "name": "Missed in Speaker", "type": "number", "category": "auto-scoring", "identifier": "auto-missed-in-speaker"},
+        { "name": "Scored in Amp", "type": "number", "category": "auto-scoring", "group": "Auto (Notes)", "identifier": "auto-scored-in-amp" },
+        { "name": "Missed in Amp", "type": "number", "category": "auto-scoring", "identifier": "auto-missed-in-amp" },
+        { "name": "Scored in Speaker", "type": "number", "category": "auto-scoring", "identifier": "auto-scored-in-speaker" },
+        { "name": "Missed in Speaker", "type": "number", "category": "auto-scoring", "identifier": "auto-missed-in-speaker" },
 
-        { "name": "Scored in Amp", "type": "number", "category": "teleop-scoring", "group": "Teleop (Qualitative)", "identifier": "teleop-scored-in-amp"},
-        { "name": "Missed in Amp", "type": "number", "category": "teleop-scoring", "identifier": "teleop-missed-in-amp"},
-        { "name": "Scored in Speaker", "type": "number", "category": "teleop-scoring", "identifier": "teleop-scored-in-speaker"},
-        { "name": "Scored in Amplified", "type": "number", "category": "teleop-scoring", "identifier": "teleop-scored-in-amplified"},
-        { "name": "Missed in Speaker", "type": "number", "category": "teleop-scoring", "identifier": "teleop-missed-in-speaker"},
-        { "name": "Note Scored in Trap", "type": "number", "category": "teleop-scoring", "identifier": "teleop-scored-in-trap"},
-        { "name": "Note Missed in Trap", "type": "number", "category": "teleop-scoring", "identifier": "teleop-missed-in-trap"},
+        { "name": "Scored in Amp", "type": "number", "category": "teleop-scoring", "group": "Teleop (Qualitative)", "identifier": "teleop-scored-in-amp" },
+        { "name": "Missed in Amp", "type": "number", "category": "teleop-scoring", "identifier": "teleop-missed-in-amp" },
+        { "name": "Scored in Speaker", "type": "number", "category": "teleop-scoring", "identifier": "teleop-scored-in-speaker" },
+        { "name": "Scored in Amplified", "type": "number", "category": "teleop-scoring", "identifier": "teleop-scored-in-amplified" },
+        { "name": "Missed in Speaker", "type": "number", "category": "teleop-scoring", "identifier": "teleop-missed-in-speaker" },
+        { "name": "Note Scored in Trap", "type": "number", "category": "teleop-scoring", "identifier": "teleop-scored-in-trap" },
+        { "name": "Note Missed in Trap", "type": "number", "category": "teleop-scoring", "identifier": "teleop-missed-in-trap" },
 
         { "name": "Spotlit?", "type": "toggle", "category": "abilities", "group": "Endgame (Qualitative)", "identifier": "teleop-spotlight-2024" },
-        { "name": "Stage Level", "type": "select", "category": "abilities", "values": ["None","Parked","Onstage","Harmonized"], "identifier": "teleop-stage-level-2024" },
-        { "name": "Can pick up from ground?", "type": "toggle", "category": "abilities", "identifier": "ground-pick-up"},
+        { "name": "Stage Level", "type": "select", "category": "abilities", "values": ["None", "Parked", "Onstage", "Harmonized"], "identifier": "teleop-stage-level-2024" },
+        { "name": "Can pick up from ground?", "type": "toggle", "category": "abilities", "identifier": "ground-pick-up" },
 
         { "name": "Defense Skill", "type": "rating", "category": "ratings", "group": "Ratings (Qualitative)", "identifier": "defense-skill" },
-        { "name": "Driver Skill", "type": "rating", "category": "ratings", "identifier": "driver-skill"},
-        { "name": "Intake Consistency", "type": "rating", "category": "ratings", "identifier": "intake-consistency"},
-        { "name": "Speed", "type": "rating", "category": "ratings", "identifier": "speed"},
-        { "name": "Stability", "type": "rating", "category": "ratings", "identifier": "stability"},
+        { "name": "Driver Skill", "type": "rating", "category": "ratings", "identifier": "driver-skill" },
+        { "name": "Intake Consistency", "type": "rating", "category": "ratings", "identifier": "intake-consistency" },
+        { "name": "Speed", "type": "rating", "category": "ratings", "identifier": "speed" },
+        { "name": "Stability", "type": "rating", "category": "ratings", "identifier": "stability" },
 
         { "name": "Notes", "type": "text", "category": "data", "tip": "Fouls, Disabled, etc...", "identifier": "notes" }
     ]
@@ -109,97 +109,97 @@ let currentTemplate = JSON.parse(localStorage.template ?? JSON.stringify(example
 loadTemplate(currentTemplate);
 setLocation(localStorage.location ?? "Red 1");
 
-if (matchListings.length != 0){
-  teamDisp.readOnly = true;
+if (matchListings.length != 0) {
+    teamDisp.readOnly = true;
 }
 
 if (localStorage.backup) {
-  const backup = JSON.parse(localStorage.backup);
-  matchCount = backup.find(metric => metric.name == "Match").value;
-  authPasswd.value = backup.find(metric => metric.name == "Auth").value;
-  matchMetric.value = matchCount;
-  scoutName.value = backup.find(metric => metric.name == "tName").value;
-  isAbsent = backup.find(metric => metric.name == "Absent").value;
-  if (isAbsent) {
-    absentMetric.innerHTML = "<i class='square-checked text-icon'></i>Absent";
-    customMetricsDiv.classList.toggle("hide");
-    refreshIcons(absentMetric);
-  }
-  gameMetrics.forEach(metric => {
-    metric.update(backup.find(m => m.name == metric.name).value);
-  });
-  if (matchListings.length != 0) {
-    teamDisp.value = determineTeam(matchMetric.value, scoutLocation);
-  }
+    const backup = JSON.parse(localStorage.backup);
+    matchCount = backup.find(metric => metric.name == "Match").value;
+    authPasswd.value = backup.find(metric => metric.name == "Auth").value;
+    matchMetric.value = matchCount;
+    scoutName.value = backup.find(metric => metric.name == "tName").value;
+    isAbsent = backup.find(metric => metric.name == "Absent").value;
+    if (isAbsent) {
+        absentMetric.innerHTML = "<i class='square-checked text-icon'></i>Absent";
+        customMetricsDiv.classList.toggle("hide");
+        refreshIcons(absentMetric);
+    }
+    gameMetrics.forEach(metric => {
+        metric.update(backup.find(m => m.name == metric.name).value);
+    });
+    if (matchListings.length != 0) {
+        teamDisp.value = determineTeam(matchMetric.value, scoutLocation);
+    }
 }
 
 function determineTeam(matchNo, positionStr) {
-  let arrayPos = 0;
-  if (matchListings.length != 0) {
-    if (matchListings[matchNo - 1] != undefined) {
-      if (positionStr[0] == "R") {
-        arrayPos = parseInt(positionStr[positionStr.length - 1]) - 1;
-      } else {
-        arrayPos = parseInt(positionStr[positionStr.length - 1]) + 2;
-      }
-      teamDisp.value = matchListings[matchNo - 1][arrayPos];
-      return(matchListings[matchNo - 1][arrayPos]);
-    } else {
-      teamDisp.value = "None";
-      return "None"
+    let arrayPos = 0;
+    if (matchListings.length != 0) {
+        if (matchListings[matchNo - 1] != undefined) {
+            if (positionStr[0] == "R") {
+                arrayPos = parseInt(positionStr[positionStr.length - 1]) - 1;
+            } else {
+                arrayPos = parseInt(positionStr[positionStr.length - 1]) + 2;
+            }
+            teamDisp.value = matchListings[matchNo - 1][arrayPos];
+            return (matchListings[matchNo - 1][arrayPos]);
+        } else {
+            teamDisp.value = "None";
+            return "None"
+        }
     }
-  }
 }
 
-function postSurvey(surveyJson){
-  newJson = '{\n"data": {\n';
-  JSON.stringify(surveyJson.forEach(metric => {
-    prettyName = metric.name;
-    if (typeof metric.value == "string") newJson += (`    "${prettyName}": { "content": "${metric.value}", "category": "${metric.category}" },\n`);
-    else newJson += (`    "${prettyName}": { "content": "${JSON.stringify(metric.value)}", "category": "${metric.category}" },\n`);
-  }));
-  // remove last comma
-  newJson = newJson.slice(0, -2);
-  newJson += '\n}\n}';
+function postSurvey(surveyJson) {
+    newJson = '{\n"data": {\n';
+    JSON.stringify(surveyJson.forEach(metric => {
+        prettyName = metric.name;
+        if (typeof metric.value == "string") newJson += (`    "${prettyName}": { "content": "${metric.value}", "category": "${metric.category}" },\n`);
+        else newJson += (`    "${prettyName}": { "content": "${JSON.stringify(metric.value)}", "category": "${metric.category}" },\n`);
+    }));
+    // remove last comma
+    newJson = newJson.slice(0, -2);
+    newJson += '\n}\n}';
 
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", serverURL + "/api/scouting");
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", serverURL + "/api/scouting");
 
-  xhr.setRequestHeader("Accept", "application/json");
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.setRequestHeader("x-pass-key", authPasswd.value);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("x-pass-key", authPasswd.value);
 
-  xhr.onload = function () {
-    console.log(xhr.status);
+    xhr.onload = function () {
+        console.log(xhr.status);
 
-    if (xhr.status == 401){
-        console.log("Password Failed")
-      alert("Authentication failure. Please check password.");
-      authPasswd.focus();
-      return;
-    }
+        if (xhr.status == 401) {
+            console.log("Password Failed")
+            alert("Authentication failure. Please check password.");
+            authPasswd.focus();
+            return;
+        }
 
-	// Process our return data
-	if (xhr.status >= 200 && xhr.status < 300) {
-		// Runs when the request is successful
-		console.log(xhr.responseText);
-    if (xhr.status == 202){
-      resetSurvey(false);
-    }
-    else if (xhr.status == 200) {
-        resetSurvey(false)
-    }
-    else{
-      alert("Unknown error occured. Please check your Internet connection.");
-      return;
-    }
-	} else {
-		// Runs when it's not
-		console.log(xhr.responseText);
-	 }
-  };
-  xhr.send(newJson);
-  
+        // Process our return data
+        if (xhr.status >= 200 && xhr.status < 300) {
+            // Runs when the request is successful
+            console.log(xhr.responseText);
+            if (xhr.status == 202) {
+                resetSurvey(false);
+            }
+            else if (xhr.status == 200) {
+                resetSurvey(false)
+            }
+            else {
+                alert("Unknown error occured. Please check your Internet connection.");
+                return;
+            }
+        } else {
+            // Runs when it's not
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send(newJson);
+
 }
 
 function surveyToJson(surveyJson) {
@@ -268,78 +268,72 @@ function surveyToJson(surveyJson) {
         return JSON.stringify(formattedJson, null, 2);
 }
 
-function surveyList() {
+/** Function to call the survey data instead of just writing it all out manually */
+function surveyData() {
     return [
         { name: "Team", value: teamMetric.value, category: "metadata", identifier: "team" },
         { name: "Matchnum", value: matchMetric.value, category: "metadata", identifier: "match" },
         { name: "Absent", value: isAbsent, category: "metadata", identifier: "absent" },
         { name: "Location", value: locationSelect.value, category: "metadata", identifier: "location" },
-        { name: "Name", value: scoutName.value, category: "metadata", identifier: "name"},
+        { name: "Name", value: scoutName.value, category: "metadata", identifier: "name" },
         ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value, category: metric.category, identifier: metric.identifier } })
-      ]
+    ];
 }
 
 /** Stores the current unsaved survey to `localStorage` */
 function backupSurvey() {
-  localStorage.backup = JSON.stringify([
-    { name: "Team", value: teamMetric.value, category: teamMetric.category },
-    { name: "Matchnum", value: matchMetric.value, category: matchMetric.category },
-    { name: "Auth", value: authPasswd.value, category: authPasswd.category },
-    { name: "Absent", value: isAbsent, category: isAbsent.category },
-    { name: "Name", value: scoutName.value, category: scoutName.category },
-    ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value, category: metric.category } })
-  ]);
+    localStorage.backup = JSON.stringify(surveyData());
 }
 
 /** Toggles the options menu */
 function toggleMenu() {
-  menuDiv.classList.toggle("hide");
+    menuDiv.classList.toggle("hide");
 }
 
 /** Toggles whether the team is absent */
 function toggleAbsent() {
-  customMetricsDiv.classList.toggle("hide");
-  absentMetric.innerHTML = `<i class="square-${isAbsent ? "empty" : "checked"} text-icon"></i>Absent`;
-  refreshIcons(absentMetric);
-  isAbsent = !isAbsent;
-  backupSurvey();
+    customMetricsDiv.classList.toggle("hide");
+    absentMetric.innerHTML = `<i class="square-${isAbsent ? "empty" : "checked"} text-icon"></i>Absent`;
+    refreshIcons(absentMetric);
+    isAbsent = !isAbsent;
+    backupSurvey();
 }
 
 /** Copies the current template to clipboard */
 function copyTemplate() {
-  const input = document.createElement("input");
-  input.value = JSON.stringify(currentTemplate);
-  document.body.append(input);
-  input.select();
-  input.setSelectionRange(0, input.value.length);
-  document.execCommand("copy");
-  input.remove();
-  alert("Copied template");
+    const input = document.createElement("input");
+    input.value = JSON.stringify(currentTemplate);
+    document.body.append(input);
+    input.select();
+    input.setSelectionRange(0, input.value.length);
+    document.execCommand("copy");
+    input.remove();
+    alert("Copied template");
 }
 
 /** Requests a new template and checks if the template is valid */
 function editTemplate() {
-  const newPrompt = prompt("Paste new template (you can also 'reset' the template):");
-  if (newPrompt) {
-    if (newPrompt == "reset") {
-      setTemplate();
-    } else {
-      const newTemplate = JSON.parse(newPrompt);
-      let error;
-      if (newTemplate.metrics) {
-        newTemplate.metrics.forEach(metric => {
-          if (!metric.name) error = "Metric has no name";
-          if (!Array.isArray(metric.values ?? [])) error = "Metric has invalid values";
-          if (!metricTypes.hasOwnProperty(metric.type)) error = "Metric has invalid type";
-        });
-      } else error = "Template has no metrics";
-      if (error) {
-        alert(`Could not set template! ${error}`);
-        return;
-      }
-      setTemplate(newTemplate);
+    const newPrompt = prompt("Paste new template (you can also 'reset' the template):");
+    if (newPrompt) {
+        if (newPrompt == "reset") {
+            setTemplate();
+        } else {
+            const newTemplate = JSON.parse(newPrompt);
+            let error;
+            if (newTemplate.metrics) {
+                newTemplate.metrics.forEach(metric => {
+                    if (!metric.name) error = "Metric has no name";
+                    if (!Array.isArray(metric.values ?? [])) error = "Metric has invalid values";
+                    if (!metricTypes.hasOwnProperty(metric.type)) error = "Metric has invalid type";
+                });
+            } else error = "Template has no metrics";
+            if (error) {
+                alert(`Could not set template! ${error}`);
+                return;
+            }
+            setTemplate(newTemplate);
+        }
     }
-  }
 }
 
 /**
@@ -347,11 +341,11 @@ function editTemplate() {
  * @param {object} newTemplate An object that contains template data
  */
 function setTemplate(newTemplate = exampleTemplate) {
-  currentTemplate = JSON.parse(JSON.stringify(newTemplate));
-  localStorage.template = JSON.stringify(currentTemplate ?? "");
-  loadTemplate(currentTemplate);
-  backupSurvey();
-  refreshIcons();
+    currentTemplate = JSON.parse(JSON.stringify(newTemplate));
+    localStorage.template = JSON.stringify(currentTemplate ?? "");
+    loadTemplate(currentTemplate);
+    backupSurvey();
+    refreshIcons();
 }
 
 /**
@@ -359,27 +353,27 @@ function setTemplate(newTemplate = exampleTemplate) {
  * @param {object} newTemplate An object that contains template data
  */
 function loadTemplate(newTemplate = exampleTemplate) {
-  teamMetricList.innerHTML = "";
-  if (newTemplate.teams) {
-    newTemplate.teams.forEach(team => {
-      teamMetricList.innerHTML += `<option value="${team}">`;
-    });
-  }
-  customMetricsDiv.innerHTML = "";
-  gameMetrics = [];
-  let metricObject;
-  newTemplate.metrics.forEach(metric => {
-    metricObject = new metricTypes[metric.type](metric);
-    if (metric.group) {
-      let groupSpan = document.createElement("span");
-      groupSpan.classList.add("group");
-      groupSpan.innerHTML = metric.group;
-      customMetricsDiv.append(groupSpan);
+    teamMetricList.innerHTML = "";
+    if (newTemplate.teams) {
+        newTemplate.teams.forEach(team => {
+            teamMetricList.innerHTML += `<option value="${team}">`;
+        });
     }
-    customMetricsDiv.append(metricObject.element);
-    // console.log(metricObject)
-    gameMetrics.push(metricObject);
-  });
+    customMetricsDiv.innerHTML = "";
+    gameMetrics = [];
+    let metricObject;
+    newTemplate.metrics.forEach(metric => {
+        metricObject = new metricTypes[metric.type](metric);
+        if (metric.group) {
+            let groupSpan = document.createElement("span");
+            groupSpan.classList.add("group");
+            groupSpan.innerHTML = metric.group;
+            customMetricsDiv.append(groupSpan);
+        }
+        customMetricsDiv.append(metricObject.element);
+        // console.log(metricObject)
+        gameMetrics.push(metricObject);
+    });
 }
 
 /**
@@ -387,89 +381,69 @@ function loadTemplate(newTemplate = exampleTemplate) {
  * @param {string} newLocation A string that includes alliance color and robot position
  */
 function setLocation(newLocation = "Red 1") {
-  scoutLocation = newLocation;
-  let newTheme = "red";
-  if (/blue/.test(newLocation.toLowerCase())) newTheme = "blue";
-  document.documentElement.style.setProperty("--theme-color", `var(--${newTheme})`);
-  localStorage.location = newLocation;
-  locationText.innerHTML = newLocation;
-  locationSelect.value = newLocation;
-  if (matchListings.length != 0) teamDisp.value = determineTeam(matchMetric.value, scoutLocation);
-  else teamMetric.value = null;
-  refreshIcons();
+    scoutLocation = newLocation;
+    let newTheme = "red";
+    if (/blue/.test(newLocation.toLowerCase())) newTheme = "blue";
+    document.documentElement.style.setProperty("--theme-color", `var(--${newTheme})`);
+    localStorage.location = newLocation;
+    locationText.innerHTML = newLocation;
+    locationSelect.value = newLocation;
+    if (matchListings.length != 0) teamDisp.value = determineTeam(matchMetric.value, scoutLocation);
+    else teamMetric.value = null;
+    refreshIcons();
 }
 
 /** Validates and saves the current survey to `localStorage` */
 function saveSurvey() {
-  if (matchListings.length == 0) {
-    // Matches a 1-4 long sequence of numbers and an optional character
-    if (!/^\d{1,4}[A-Z]?$/.test(teamMetric.value)) {
-      alert("Invalid team value! Please enter a 1-9999 digit team number.");
-      teamMetric.focus();
-      return;
-    }
-    if (currentTemplate.teams) {
-      if (!currentTemplate.teams.some(team => team == teamMetric.value)) {
-        alert("Invalid team value! Please enter a 1-9999 digit team number.");
-        teamMetric.focus();
-        return;
-      }
-    }
+    if (matchListings.length == 0) {
+        // Matches a 1-4 long sequence of numbers and an optional character
+        if (!/^\d{1,4}[A-Z]?$/.test(teamMetric.value)) {
+            alert("Invalid team value! Please enter a 1-9999 digit team number.");
+            teamMetric.focus();
+            return;
+        }
+        if (currentTemplate.teams) {
+            if (!currentTemplate.teams.some(team => team == teamMetric.value)) {
+                alert("Invalid team value! Please enter a 1-9999 digit team number.");
+                teamMetric.focus();
+                return;
+            }
+        }
 
-    if (scoutName.value == "") {
-        alert("Invalid name value! Please enter your name where it goes.");
-        teamMetric.focus();
+        if (scoutName.value == "") {
+            alert("Invalid name value! Please enter your name where it goes.");
+            teamMetric.focus();
+            return;
+        }
+
+    }
+    // Matches a 1-3 long sequence of numbers
+    if (!/\d{1,3}/.test(matchMetric.value)) {
+        alert("Invalid match value! Make sure the match value is an integer.");
+        matchMetric.focus();
         return;
     }
-    
-  }
-  // Matches a 1-3 long sequence of numbers
-  if (!/\d{1,3}/.test(matchMetric.value)) {
-    alert("Invalid match value! Make sure the match value is an integer.");
-    matchMetric.focus();
-    return;
-  }
-  if (matchListings.length != 0) {
-    if (1 > matchMetric.value || matchMetric.value > matchListings.length) {
-      alert("Invalid match value! Make sure the match value is a valid qualifier match.");
-      matchMetric.focus();
-      return;
+    if (matchListings.length != 0) {
+        if (1 > matchMetric.value || matchMetric.value > matchListings.length) {
+            alert("Invalid match value! Make sure the match value is a valid qualifier match.");
+            matchMetric.focus();
+            return;
+        }
     }
-  }
-  if (authPasswd.value == ""){
-    if (!confirm("Save match data OFFLINE?")) return;
-    let surveys = JSON.parse(localStorage.surveys ?? "[]");
-    surveys.push([
-      { name: "Team", value: teamMetric.value, category: "1Important" },
-      { name: "Matchnum", value: matchMetric.value, category: "2Important" },
-      { name: "Absent", value: isAbsent, category: "3Important" },
-      { name: "Location", value: locationSelect.value, category: "5Important" },
-      { name: "Name", value: scoutName.value, category: "4Important" },
-      ...gameMetrics.map(metric => { return { name: metric.name, value: JSON.stringify(metric.value), category: metric.category } })
-    ]);
-    localStorage.surveys = JSON.stringify(surveys);
-    resetSurvey(false);
-  }
-  else {
-    if (!confirm("Save match data online?")) return;
-    let surveys = JSON.parse(localStorage.surveys ?? "[]");
-    surveys.push([
-      { name: "Team", value: teamMetric.value, category: "1Important" },
-      { name: "Matchnum", value: matchMetric.value, category: "2Important" },
-      { name: "Absent", value: isAbsent, category: "3Important" },
-      { name: "Location", value: locationSelect.value, category: "5Important" },
-      { name: "Name", value: scoutName.value, category: "4Important" },
-      ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
-    ]);
-    postSurvey([
-      { name: "Team", value: teamMetric.value, category: "1Important" },
-      { name: "Matchnum", value: matchMetric.value, category: "2Important" },
-      { name: "Absent", value: isAbsent, category: "3Important" },
-      { name: "Location", value: locationSelect.value, category: "5Important" },
-      { name: "Name", value: scoutName.value, category: "4Important"},
-      ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value, category: metric.category } })
-    ]);
-  }
+    if (authPasswd.value == "") {
+        if (!confirm("Save match data OFFLINE?")) return;
+        let surveys = JSON.parse(localStorage.surveys ?? "[]");
+        surveys.push(surveyData());
+        console.log(surveyToJson(surveyData()))
+        localStorage.surveys = JSON.stringify(surveys);
+        resetSurvey(false);
+    }
+    else {
+        if (!confirm("Save match data online?")) return;
+        let surveys = JSON.parse(localStorage.surveys ?? "[]");
+        surveys.push(surveyData());
+        postSurvey(surveyData());
+    }
 }
 
 /**
@@ -477,17 +451,17 @@ function saveSurvey() {
  * @param {boolean} askUser A boolean that represents whether to prompt the user
  */
 function resetSurvey(askUser = true) {
-  if (askUser) if (prompt("Type 'reset' to reset this match's data.") != "reset") return;
-  if (!askUser) {
-    matchCount = parseInt(matchMetric.value) + 1;
-    matchMetric.value = matchCount;
-  }
-  if (isAbsent) toggleAbsent();
-  gameMetrics.forEach(metric => metric.reset());
-  if (matchListings.length != 0) teamDisp.value = determineTeam(matchMetric.value, scoutLocation);
-  else teamMetric.value = null;
-  refreshIcons();
-  localStorage.backup = "";
+    if (askUser) if (prompt("Type 'reset' to reset this match's data.") != "reset") return;
+    if (!askUser) {
+        matchCount = parseInt(matchMetric.value) + 1;
+        matchMetric.value = matchCount;
+    }
+    if (isAbsent) toggleAbsent();
+    gameMetrics.forEach(metric => metric.reset());
+    if (matchListings.length != 0) teamDisp.value = determineTeam(matchMetric.value, scoutLocation);
+    else teamMetric.value = null;
+    refreshIcons();
+    localStorage.backup = "";
 }
 
 /**
@@ -495,60 +469,59 @@ function resetSurvey(askUser = true) {
  * @param {boolean} askUser A boolean that represents whether to prompt the user
  */
 function downloadSurveys(askUser = true) {
-  if (askUser) if (!confirm("Are you sure you would like to export collected data?")) return;
+    if (askUser) if (!confirm("Are you sure you would like to export collected data?")) return;
 
-  var fileName = localStorage.location.replace(" ", "_").toLowerCase();
-  var today = new Date();
-  fileName = fileName + "_" + today.getHours() + "h" + today.getMinutes() + "m";
-  const anchor = document.createElement("a");
-  anchor.href = "data:text/plain;charset=utf-8,";
+    var fileName = localStorage.location.replace(" ", "_").toLowerCase();
+    var today = new Date();
+    fileName = fileName + "_" + today.getHours() + "h" + today.getMinutes() + "m";
+    const anchor = document.createElement("a");
+    anchor.href = "data:text/plain;charset=utf-8,";
 
-  switch (downloadSelect.value) {
-    case "JSON":
-      surveyJson = JSON.parse(localStorage.surveys);
-      newJson = '{\n"data": {\n';
+    switch (downloadSelect.value) {
+        case "JSON":
+            surveyJson = JSON.parse(localStorage.surveys);
+            console.log(surveyJson);
+            if (surveyJson.length == 1) {
+                newJson = surveyToJson(surveyJson[0]);
+            } else {
+                newJson = {entries: []}
+                for (i = 0; i < surveyJson.length; i++) {
+                    newJson["entries"].push(JSON.parse(surveyToJson(surveyJson[i])));
+                }
+                newJson = JSON.stringify(newJson, null, 2);
+            }
 
-      JSON.stringify(surveyJson[0].forEach(metric => {
-        prettyName = metric.name;
-        if (typeof metric.value == "string") newJson += (`    "${prettyName}": { "content": "${metric.value.replace('"', "").replace('"', "")}", "category": "${metric.category}" },\n`);
-        else newJson += (`    "${prettyName}": { "content": "${JSON.stringify(metric.value)}", "category": "${metric.category}" },\n`);
-       }));
+            anchor.href += encodeURIComponent(newJson);
+            console.log(newJson);
+            anchor.download = fileName + ".json";
 
-       // remove last comma
-       newJson = newJson.slice(0, -2);
-       newJson += '\n}\n}';
+            break;
 
-      anchor.href += encodeURIComponent(newJson);
-      console.log(newJson);
-      anchor.download = fileName + ".json";
-
-      break;
-
-    case "CSV":
-      let surveys = JSON.parse(localStorage.surveys);
-      let csv = "";
-      if (surveys) {
-        surveys.forEach(survey => {
-          let surveyAsCSV = "";
-          survey.forEach(metric => {
-            if (typeof metric.value == "string") surveyAsCSV += "\"" + metric.value + "\",";
-            else surveyAsCSV += metric.value + ",";
-          });
-          csv += surveyAsCSV + "\n";
-        });
-      }
-      anchor.href += encodeURIComponent(csv);
-      anchor.download = fileName + ".csv";
-      break;
-  }
-  document.body.append(anchor);
-  anchor.click();
-  anchor.remove();
+        case "CSV":
+            let surveys = JSON.parse(localStorage.surveys);
+            let csv = "";
+            if (surveys) {
+                surveys.forEach(survey => {
+                    let surveyAsCSV = "";
+                    survey.forEach(metric => {
+                        if (typeof metric.value == "string") surveyAsCSV += "\"" + metric.value + "\",";
+                        else surveyAsCSV += metric.value + ",";
+                    });
+                    csv += surveyAsCSV + "\n";
+                });
+            }
+            anchor.href += encodeURIComponent(csv);
+            anchor.download = fileName + ".csv";
+            break;
+    }
+    document.body.append(anchor);
+    anchor.click();
+    anchor.remove();
 }
 
 /** Erases all surveys from `localStorage` after prompting the user **/
 function eraseSurveys() {
-  if (prompt("This deletes all scouting data! Type 'ERASE' to erase saved surveys") == "ERASE"){
-    localStorage.surveys = "[]";
-  }
+    if (prompt("This deletes all scouting data! Type 'ERASE' to erase saved surveys") == "ERASE") {
+        localStorage.surveys = "[]";
+    }
 }
