@@ -203,69 +203,74 @@ function postSurvey(surveyJson) {
 }
 
 function surveyToJson(surveyJson) {
-        const formattedJson = {};
-        formattedJson["data"] = {"auto-scoring-2024": [], "teleop-scoring-2024": []}; //initializes data category before others
-        console.log(surveyJson);
-        surveyJson.forEach(metric => {
-                if (!formattedJson[metric.category]) {  // Makes Categories if they don't exist
-                        switch (metric.category) {  // Checks to make sure auto and teleop are put into the data category
-                            case "auto-scoring":
-                                break;
-                            case "teleop-scoring":
-                                break;
-                            default:
-                                formattedJson[metric.category] = {}; // Add the missing category object
-                                break;
-                        }
+    const formattedJson = {
+        data: {
+            "auto-scoring-2024": [],
+            "teleop-scoring-2024": []
+        }
+    };
+
+    surveyJson.forEach(metric => {
+        if (!formattedJson[metric.category]) {
+            switch (metric.category) {
+                case "auto-scoring":
+                case "teleop-scoring":
+                    break;
+                default:
+                    formattedJson[metric.category] = {};
+                    break;
+            }
+        }
+
+        if (metric.category === "auto-scoring" || metric.category === "teleop-scoring") {
+            const categoryKey = metric.category === "auto-scoring" ? "auto-scoring-2024" : "teleop-scoring-2024";
+            const identifier = metric.identifier;
+
+            if (metric.value > 0) {
+                switch (identifier) {
+                    case "auto-scored-in-amp":
+                        formattedJson.data[categoryKey].push(...Array(metric.value).fill("as"));
+                        break;
+                    case "auto-missed-in-amp":
+                        formattedJson.data[categoryKey].push(...Array(metric.value).fill("am"));
+                        break;
+                    case "auto-scored-in-speaker":
+                        formattedJson.data[categoryKey].push(...Array(metric.value).fill("ss"));
+                        break;
+                    case "auto-missed-in-speaker":
+                        formattedJson.data[categoryKey].push(...Array(metric.value).fill("sm"));
+                        break;
+                    case "teleop-scored-in-amp":
+                        formattedJson.data[categoryKey].push(...Array(metric.value).fill("as"));
+                        break;
+                    case "teleop-missed-in-amp":
+                        formattedJson.data[categoryKey].push(...Array(metric.value).fill("am"));
+                        break;
+                    case "teleop-scored-in-speaker":
+                        formattedJson.data[categoryKey].push(...Array(metric.value).fill("ss"));
+                        break;
+                    case "teleop-scored-in-amplified":
+                        formattedJson.data[categoryKey].push(...Array(metric.value).fill("sa"));
+                        break;
+                    case "teleop-missed-in-speaker":
+                        formattedJson.data[categoryKey].push(...Array(metric.value).fill("sm"));
+                        break;
+                    case "teleop-scored-in-trap":
+                        formattedJson.data[categoryKey].push(...Array(metric.value).fill("ts"));
+                        break;
+                    case "teleop-missed-in-trap":
+                        formattedJson.data[categoryKey].push(...Array(metric.value).fill("tm"));
+                        break;
+                    default:
+                        break;
                 }
-                // console.log(metric.category)
-                if (metric.category == "auto-scoring" || metric.category == "teleop-scoring") { // Adds auto and teleop to appropriate lists
-                    // switch case to check if note was scored or missed in amp/speaker
-                    // formattedJson["data"]["auto-scoring-2024"] = formattedJson["data"]["auto-scoring-2024"].concat("hi");
-                    console.log(metric.identifier)
-                    switch (metric.identifier) {    // Appends the correct letters to the appropriate list
-                        case "auto-scored-in-amp":
-                            if (metric.value > 0) {for (let i=0; i<metric.value; i++) formattedJson["data"]["auto-scoring-2024"] = formattedJson["data"]["auto-scoring-2024"].concat("as");}
-                            break;
-                        case "auto-missed-in-amp":
-                            if (metric.value > 0) {for (let i=0; i<metric.value; i++) formattedJson["data"]["auto-scoring-2024"] = formattedJson["data"]["auto-scoring-2024"].concat("am");}
-                            break;
-                        case "auto-scored-in-speaker":
-                            if (metric.value > 0) {for (let i=0; i<metric.value; i++) formattedJson["data"]["auto-scoring-2024"] = formattedJson["data"]["auto-scoring-2024"].concat("ss");}
-                            break;
-                        case "auto-missed-in-speaker":
-                            if (metric.value > 0) {for (let i=0; i<metric.value; i++) formattedJson["data"]["auto-scoring-2024"] = formattedJson["data"]["auto-scoring-2024"].concat("sm");}
-                            break;
-                        case "teleop-scored-in-amp":
-                            if (metric.value > 0) {for (let i=0; i<metric.value; i++) formattedJson["data"]["teleop-scoring-2024"] = formattedJson["data"]["teleop-scoring-2024"].concat("as");}
-                            break;
-                        case "teleop-missed-in-amp":
-                            if (metric.value > 0) {for (let i=0; i<metric.value; i++) formattedJson["data"]["teleop-scoring-2024"] = formattedJson["data"]["teleop-scoring-2024"].concat("am");}
-                            break;
-                        case "teleop-scored-in-speaker":
-                            if (metric.value > 0) {for (let i=0; i<metric.value; i++) formattedJson["data"]["teleop-scoring-2024"] = formattedJson["data"]["teleop-scoring-2024"].concat("ss");}
-                            break;
-                        case "teleop-scored-in-amplified":
-                            if (metric.value > 0) {for (let i=0; i<metric.value; i++) formattedJson["data"]["teleop-scoring-2024"] = formattedJson["data"]["teleop-scoring-2024"].concat("sa");}
-                            break;
-                        case "teleop-missed-in-speaker":
-                            if (metric.value > 0) {for (let i=0; i<metric.value; i++) formattedJson["data"]["teleop-scoring-2024"] = formattedJson["data"]["teleop-scoring-2024"].concat("sm");}
-                            break;
-                        case "teleop-scored-in-trap":
-                            if (metric.value > 0) {for (let i=0; i<metric.value; i++) formattedJson["data"]["teleop-scoring-2024"] = formattedJson["data"]["teleop-scoring-2024"].concat("ts");}
-                            break;
-                        case "teleop-missed-in-trap":
-                            if (metric.value > 0) {for (let i=0; i<metric.value; i++) formattedJson["data"]["teleop-scoring-2024"] = formattedJson["data"]["teleop-scoring-2024"].concat("tm");}
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                else {
-                    formattedJson[metric.category][metric.identifier] = metric.value;
-                }
-        });
-        return JSON.stringify(formattedJson, null, 2);
+            }
+        } else {
+            formattedJson[metric.category][metric.identifier] = metric.value;
+        }
+    });
+
+    return JSON.stringify(formattedJson, null, 2);
 }
 
 /** Function to call the survey data instead of just writing it all out manually */
