@@ -1,8 +1,9 @@
 // After creating a new metric, don't forget to add it to `metricTypes`, the example template, and the README.
 class ToggleMetricGrid {
-  constructor(metric = { name: "togglegrid", category: "category"}) {
+  constructor(metric = { name: "togglegrid", category: "category", identifier: "identifier" }) {
     this.name = metric.name;
     this.category = metric.category;
+    this.identifier = metric.identifier;
     this.element = document.createElement("div");
     this.value = [];
     this.element.className = "grid-container"; // Add a class name for styling
@@ -45,9 +46,10 @@ class ToggleMetricGrid {
 }
 
 class ToggleMetric {
-  constructor(metric = { name: "toggle", category: "category" }) {
+  constructor(metric = { name: "toggle", category: "category", identifier: "identifier" }) {
     this.name = metric.name;
     this.category = metric.category;
+    this.identifier = metric.identifier;
     this.value = false;
     this.element = document.createElement("div");
     this.toggle = document.createElement("button");
@@ -72,9 +74,10 @@ class ToggleMetric {
 
 
 class ToggleMetricInt {
-    constructor(metric = { name: "toggleint", category: "category" }) {
+    constructor(metric = { name: "toggleint", category: "category", identifier: "identifier" }) {
       this.name = metric.name;
       this.category = metric.category;
+      this.identifier = metric.identifier;
       this.value = 0;
       this.element = document.createElement("div");
       this.toggle = document.createElement("button");
@@ -110,9 +113,10 @@ class ToggleMetricInt {
 
 /** A number input with increment/decrement buttons. Value is an integer. */
 class NumberMetric {
-  constructor(metric = { name: "Number", category: "category" }) {
+  constructor(metric = { name: "Number", category: "category", identifier: "identifier" }) {
     this.name = metric.name;
     this.category = metric.category;
+    this.identifier = metric.identifier;
     this.value = 0;
     this.element = document.createElement("div");
     this.element.innerHTML = this.name + "<br>";
@@ -158,9 +162,10 @@ class NumberMetric {
  * There must be an array of string `values` to create options for the selector.
  */
 class SelectMetric {
-  constructor(metric = { name: "Select", values: [], category: "category" }) {
+  constructor(metric = { name: "Select", values: [], category: "category", identifier: "identifier" }) {
     this.name = metric.name;
     this.category = metric.category;
+    this.identifier = metric.identifier;
     this.values = metric.values;
     this.value = this.values[0];
     this.element = document.createElement("div");
@@ -191,9 +196,10 @@ class SelectMetric {
  * Setting a `tip` value will add a placeholder within the input field.
  */
 class TextMetric {
-  constructor(metric = { name: "Text", tip: "", category: "category" }) {
+  constructor(metric = { name: "Text", tip: "", category: "category", identifier: "identifier" }) {
     this.name = metric.name;
     this.category = metric.category;
+    this.identifier = metric.identifier;
     this.value = "";
     this.tip = metric.tip;
     this.element = document.createElement("div");
@@ -220,9 +226,10 @@ class TextMetric {
 
 /** A star rating bar. Value is a number (0-4). */
 class RatingMetric {
-  constructor(metric = { name: "Rating", category: "category" }) {
+  constructor(metric = { name: "Rating", category: "category", identifier: "identifier" }) {
     this.name = metric.name;
     this.category = metric.category;
+    this.identifier = metric.identifier;
     this.value = 0;
     this.element = document.createElement("div");
     this.element.innerHTML = this.name + "<br>";
@@ -256,9 +263,10 @@ class RatingMetric {
 
 /** A number input with timing controls. Value is a decimal. */
 class TimerMetric {
-  constructor(metric = { name: "Timer", category: "category" }) {
+  constructor(metric = { name: "Timer", category: "category", identifier: "identifier" }) {
     this.name = metric.name;
     this.category = metric.category;
+    this.identifier = metric.identifier;
     this.value = 0.0001;
     this.running = false;
     this.interval = null;

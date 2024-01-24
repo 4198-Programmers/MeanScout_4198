@@ -68,34 +68,33 @@ const metricTypes = {
 
 const survey = {
     "metrics": [
-        { "name": "Center Line Pick Up?", "type": "toggle", "category": "abilities", "group": "Auto (Qualitative)" },
-        { "name": "Leave Starting Zone?", "type": "toggle", "category": "abilities"},
+        { "name": "Center Line Pick Up?", "type": "toggle", "category": "abilities", "group": "Auto (Qualitative)", "identifier": "auto-center-line-pick-up" },
+        { "name": "Leave Starting Zone?", "type": "toggle", "category": "abilities", "identifier": "auto-leave-starting-zone"},
 
-        { "name": "Scored in Amp", "type": "number", "category": "auto-scoring", "group": "Auto (Notes)"},
-        { "name": "Missed in Amp", "type": "number", "category": "auto-scoring"},
-        { "name": "Scored in Speaker", "type": "number", "category": "auto-scoring"},
-        { "name": "Missed in Speaker", "type": "number", "category": "auto-scoring"},
+        { "name": "Scored in Amp", "type": "number", "category": "auto-scoring", "group": "Auto (Notes)", "identifier": "auto-scored-in-amp"},
+        { "name": "Missed in Amp", "type": "number", "category": "auto-scoring", "identifier": "auto-missed-in-amp"},
+        { "name": "Scored in Speaker", "type": "number", "category": "auto-scoring", "identifier": "auto-scored-in-speaker"},
+        { "name": "Missed in Speaker", "type": "number", "category": "auto-scoring", "identifier": "auto-missed-in-speaker"},
 
-        { "name": "Note Scored in Amp", "type": "number", "category": "teleop-scoring", "group": "Teleop (Qualitative)"},
-        { "name": "Note Missed in Amp", "type": "number", "category": "teleop-scoring"},
-        { "name": "Scored in Speaker", "type": "number", "category": "teleop-scoring"},
-        { "name": "Scored in Amplified", "type": "number", "category": "teleop-scoring"},
-        { "name": "Missed in Speaker", "type": "number", "category": "teleop-scoring"},
-        { "name": "Note Scored in Trap", "type": "number", "category": "teleop-scoring"},
-        { "name": "Note Missed in Trap", "type": "number", "category": "teleop-scoring"},
+        { "name": "Scored in Amp", "type": "number", "category": "teleop-scoring", "group": "Teleop (Qualitative)", "identifier": "teleop-scored-in-amp"},
+        { "name": "Missed in Amp", "type": "number", "category": "teleop-scoring", "identifier": "teleop-missed-in-amp"},
+        { "name": "Scored in Speaker", "type": "number", "category": "teleop-scoring", "identifier": "teleop-scored-in-speaker"},
+        { "name": "Scored in Amplified", "type": "number", "category": "teleop-scoring", "identifier": "teleop-scored-in-amplified"},
+        { "name": "Missed in Speaker", "type": "number", "category": "teleop-scoring", "identifier": "teleop-missed-in-speaker"},
+        { "name": "Note Scored in Trap", "type": "number", "category": "teleop-scoring", "identifier": "teleop-scored-in-trap"},
+        { "name": "Note Missed in Trap", "type": "number", "category": "teleop-scoring", "identifier": "teleop-missed-in-trap"},
 
-        { "name": "Spotlit?", "type": "toggle", "category": "abilities", "group": "Endgame (Qualitative)" },
-        { "name": "Stage Level", "type": "select", "category": "abilities", "values": ["None","Parked","Onstage","Harmonized"]},
-        { "name": "Can pick up from ground?", "type": "toggle", "category": "abilities"},
-        { "name": "Stage Time", "type": "timer", "category": "timers"},
+        { "name": "Spotlit?", "type": "toggle", "category": "abilities", "group": "Endgame (Qualitative)", "identifier": "teleop-spotlight-2024" },
+        { "name": "Stage Level", "type": "select", "category": "abilities", "values": ["None","Parked","Onstage","Harmonized"], "identifier": "teleop-stage-level-2024" },
+        { "name": "Can pick up from ground?", "type": "toggle", "category": "abilities", "identifier": "ground-pick-up"},
 
-        { "name": "Defense Skill", "type": "rating", "category": "ratings", "group": "Ratings (Qualitative)" },
-        { "name": "Driver Skill", "type": "rating", "category": "ratings"},
-        { "name": "Intake Consistency", "type": "rating", "category": "ratings"},
-        { "name": "Speed", "type": "rating", "category": "ratings"},
-        { "name": "Stability", "type": "rating", "category": "ratings"},
+        { "name": "Defense Skill", "type": "rating", "category": "ratings", "group": "Ratings (Qualitative)", "identifier": "defense-skill" },
+        { "name": "Driver Skill", "type": "rating", "category": "ratings", "identifier": "driver-skill"},
+        { "name": "Intake Consistency", "type": "rating", "category": "ratings", "identifier": "intake-consistency"},
+        { "name": "Speed", "type": "rating", "category": "ratings", "identifier": "speed"},
+        { "name": "Stability", "type": "rating", "category": "ratings", "identifier": "stability"},
 
-        { "name": "Notes", "type": "text", "category": "data", "tip": "Fouls, Disabled, etc..." }
+        { "name": "Notes", "type": "text", "category": "data", "tip": "Fouls, Disabled, etc...", "identifier": "notes" }
     ]
 };
 
