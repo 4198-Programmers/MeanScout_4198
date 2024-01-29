@@ -41,7 +41,7 @@ let scoutLocation = "Red 1";
 let matchCount = 1;
 let isAbsent = false;
 let gameMetrics = [];
-let serverURL = "https://data.team4198.org:8000";
+let serverURL = "http://127.0.0.1:8000";
 
 // If you make a new type, be sure to add it here
 const metricTypes = {
@@ -152,15 +152,7 @@ function determineTeam(matchNo, positionStr) {
 }
 
 function postSurvey(surveyJson) {
-    newJson = '{\n"data": {\n';
-    JSON.stringify(surveyJson.forEach(metric => {
-        prettyName = metric.name;
-        if (typeof metric.value == "string") newJson += (`    "${prettyName}": { "content": "${metric.value}", "category": "${metric.category}" },\n`);
-        else newJson += (`    "${prettyName}": { "content": "${JSON.stringify(metric.value)}", "category": "${metric.category}" },\n`);
-    }));
-    // remove last comma
-    newJson = newJson.slice(0, -2);
-    newJson += '\n}\n}';
+    newJson = surveyToJson(surveyJson);
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", serverURL + "/api/scouting");
