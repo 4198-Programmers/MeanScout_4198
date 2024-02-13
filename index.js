@@ -268,11 +268,11 @@ function surveyToJson(surveyJson) {
 /** Function to call the survey data instead of just writing it all out manually */
 function surveyData() {
     return [
-        { name: "Team", value: teamMetric.value, category: "metadata", identifier: "team" },
-        { name: "Matchnum", value: matchMetric.value, category: "metadata", identifier: "match" },
-        { name: "Absent", value: isAbsent, category: "metadata", identifier: "absent" },
-        { name: "Location", value: locationSelect.value, category: "metadata", identifier: "location" },
-        { name: "Name", value: scoutName.value, category: "metadata", identifier: "name" },
+        { name: "Team", value: teamMetric.value, category: "1metadata", identifier: "team" },
+        { name: "Matchnum", value: matchMetric.value, category: "1metadata", identifier: "match" },
+        { name: "Absent", value: isAbsent, category: "1metadata", identifier: "absent" },
+        { name: "Location", value: locationSelect.value, category: "1metadata", identifier: "location" },
+        { name: "Name", value: scoutName.value, category: "1metadata", identifier: "name" },
         ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value, category: metric.category, identifier: metric.identifier } })
     ];
 }
