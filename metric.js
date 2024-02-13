@@ -181,10 +181,10 @@ class SelectMetric {
     this.element.append(this.select);
   }
 
-  update(newValue = this.select.value) {
-    this.value = newValue;
-    this.select.value = newValue;
-  }
+    update(newValue = this.select.value) {
+        this.value = this.values.indexOf(newValue);
+        this.select.value = newValue;
+    }
 
   reset() {
     this.update(this.values[0]);

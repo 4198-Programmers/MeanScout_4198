@@ -85,7 +85,7 @@ const survey = {
         { "name": "Note Missed in Trap", "type": "number", "category": "teleop-scoring", "identifier": "teleop-missed-in-trap" },
 
         { "name": "Spotlit?", "type": "toggle", "category": "abilities", "group": "Endgame (Qualitative)", "identifier": "teleop-spotlight-2024" },
-        { "name": "Stage Level", "type": "select", "category": "abilities", "values": ["None", "Parked", "Onstage", "Harmonized"], "identifier": "teleop-stage-level-2024" },
+        { "name": "Stage Level", "type": "select", "category": "abilities", "values": ["None", "Parked", "Onstage", "Harmonized (1 robot)", "Harmonized (2 robot)"], "identifier": "teleop-stage-level-2024" },
         { "name": "Can pick up from ground?", "type": "toggle", "category": "abilities", "identifier": "ground-pick-up" },
 
         { "name": "Defense Skill", "type": "rating", "category": "ratings", "group": "Ratings (Qualitative)", "identifier": "defense-skill" },
