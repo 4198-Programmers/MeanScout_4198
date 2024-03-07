@@ -89,6 +89,7 @@ const survey = {
         { "name": "Can pick up from ground?", "type": "toggle", "category": "abilities", "identifier": "ground-pick-up" },
 
         { "name": "Defense Skill", "type": "rating", "category": "ratings", "group": "Ratings (Qualitative)", "identifier": "defense-skill" },
+        { "name": "Defense Skill", "type": "rating", "category": "ratings", "group": "Ratings (Qualitative)" },
         { "name": "Driver Skill", "type": "rating", "category": "ratings", "identifier": "driver-skill" },
         { "name": "Intake Consistency", "type": "rating", "category": "ratings", "identifier": "intake-consistency" },
         { "name": "Speed", "type": "rating", "category": "ratings", "identifier": "speed" },
@@ -187,7 +188,7 @@ function postSurvey(surveyJson) {
             }
         } else {
             // Runs when it's not
-            console.log(xhr.responseText);
+            console.log(xhr.responseText)
         }
     };
     xhr.send(newJson);
@@ -213,10 +214,9 @@ function surveyToJson(surveyJson) {
                     break;
             }
         }
-
+        let identifier = metric.identifier ? metric.identifier : metric.name.toLowerCase().replace(/ /g, "-");
         if (metric.category === "auto-scoring" || metric.category === "teleop-scoring") {
             const categoryKey = metric.category === "auto-scoring" ? "auto-scoring-2024" : "teleop-scoring-2024";
-            const identifier = metric.identifier;
 
             if (metric.value > 0) {
                 switch (identifier) {
@@ -258,7 +258,7 @@ function surveyToJson(surveyJson) {
                 }
             }
         } else {
-            formattedJson[metric.category][metric.identifier] = metric.value;
+            formattedJson[metric.category][identifier] = metric.value;
         }
     });
 
