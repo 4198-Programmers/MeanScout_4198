@@ -89,7 +89,6 @@ const survey = {
         { "name": "Can pick up from ground?", "type": "toggle", "category": "abilities", "identifier": "ground-pick-up" },
 
         { "name": "Defense Skill", "type": "rating", "category": "ratings", "group": "Ratings (Qualitative)", "identifier": "defense-skill" },
-        { "name": "Defense Skill", "type": "rating", "category": "ratings", "group": "Ratings (Qualitative)" },
         { "name": "Driver Skill", "type": "rating", "category": "ratings", "identifier": "driver-skill" },
         { "name": "Intake Consistency", "type": "rating", "category": "ratings", "identifier": "intake-consistency" },
         { "name": "Speed", "type": "rating", "category": "ratings", "identifier": "speed" },
