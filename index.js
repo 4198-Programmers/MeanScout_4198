@@ -69,7 +69,6 @@ const metricTypes = {
 const survey = {
     "metrics": [
         { "name": "Center Line Pick Up?", "type": "toggle", "category": "abilities", "group": "Auto (Qualitative)", "identifier": "auto-center-line-pick-up" },
-        { "name": "Leave Starting Zone?", "type": "toggle", "category": "abilities", "identifier": "auto-leave-starting-zone" },
 
         { "name": "Amp Scored", "type": "number", "category": "auto-scoring", "group": "Auto (Notes)", "identifier": "auto-scored-in-amp" },
         { "name": "Speaker Scored", "type": "number", "category": "auto-scoring", "identifier": "auto-scored-in-speaker" },
