@@ -89,6 +89,7 @@ const survey = {
         { "name": "Intake Consistency", "type": "rating", "category": "ratings", "identifier": "intake-consistency" },
         { "name": "Speed", "type": "rating", "category": "ratings", "identifier": "speed" },
         { "name": "Stability", "type": "rating", "category": "ratings", "identifier": "stability" },
+        { "name": "Overall", "type": "rating", "category": "ratings", "identifier": "overall" },
 
         { "name": "Notes", "type": "text", "category": "data", "tip": "Fouls, Disabled, etc...", "identifier": "notes" }
     ]
