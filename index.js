@@ -174,9 +174,11 @@ function postSurvey(surveyJson) {
             console.log(xhr.responseText);
             if (xhr.status == 202) {
                 resetSurvey(false);
+                alert("Success! Data was sent to the server");
             }
             else if (xhr.status == 200) {
-                resetSurvey(false)
+                resetSurvey(false);
+                alert("Success! Data was sent to the server");
             }
             else {
                 alert("Unknown error occured. Please check your Internet connection.");
