@@ -41,7 +41,10 @@ let scoutLocation = "Red 1";
 let matchCount = 1;
 let isAbsent = false;
 let gameMetrics = [];
-let serverURL = "http://data.team4198.org:8000";
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+let serverURL = urlParams.get("debug") ? "http://127.0.0.1:8000" : "http://data.team4198.org:8000";
 
 // If you make a new type, be sure to add it here
 const metricTypes = {
