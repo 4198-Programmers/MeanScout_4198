@@ -187,6 +187,7 @@ function postSurvey(surveyJson) {
         } else {
             // Runs when it's not
             console.log(xhr.responseText)
+            alert("Unknown error occured. Please check your Internet connection.");
         }
     };
     xhr.send(newJson);
